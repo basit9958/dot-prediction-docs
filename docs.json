@@ -6,6 +6,7 @@
     "dark": "/logo/dark.svg"
   },
   "favicon": "/favicon.svg",
+  "theme": "maple",
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
