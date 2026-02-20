@@ -15,10 +15,9 @@
   "navbar": {
     "primary": {
       "type": "github",
-      "url": "https://github.com/Option-Stealth/dot-prediction-api"
+      "href": "https://github.com/Option-Stealth/dot-prediction-api"
     }
   },
-  "anchors": [],
   "navigation": [
     {
       "group": "Overview",
