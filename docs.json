@@ -1,122 +1,107 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Dot Prediction",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "favicon": "/favicon.svg",
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
     "dark": "#15803D"
   },
-  "favicon": "/favicon.svg",
-  "navigation": {
-    "tabs": [
-      {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Getting started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
-          }
-        ]
-      }
-    ],
-    "global": {
-      "anchors": [
+  "navbar": {
+    "primary": {
+      "type": "github",
+      "url": "https://github.com/Option-Stealth/dot-prediction-api"
+    }
+  },
+  "anchors": [],
+  "navigation": [
+    {
+      "group": "Overview",
+      "pages": [
+        "index",
+        "quickstart"
+      ]
+    },
+    {
+      "group": "Guides",
+      "pages": [
+        "guides/authentication",
+        "guides/platforms",
+        "guides/rate-limiting",
+        "guides/pagination",
+        "guides/errors"
+      ]
+    },
+    {
+      "group": "API Reference",
+      "pages": [
+        "api-reference/introduction",
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "group": "Markets",
+          "pages": [
+            "api-reference/endpoint/list-markets",
+            "api-reference/endpoint/get-market",
+            "api-reference/endpoint/get-market-orderbook",
+            "api-reference/endpoint/get-market-trades",
+            "api-reference/endpoint/get-market-price-history"
+          ]
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "group": "Events",
+          "pages": [
+            "api-reference/endpoint/list-events",
+            "api-reference/endpoint/get-event"
+          ]
+        },
+        {
+          "group": "Series",
+          "pages": [
+            "api-reference/endpoint/list-series",
+            "api-reference/endpoint/get-series"
+          ]
+        },
+        {
+          "group": "Profiles",
+          "pages": [
+            "api-reference/endpoint/get-user-profile",
+            "api-reference/endpoint/get-user-trades"
+          ]
+        },
+        {
+          "group": "Infrastructure",
+          "pages": [
+            "api-reference/endpoint/health",
+            "api-reference/endpoint/list-platforms"
+          ]
         }
       ]
     }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+  ],
+  "api": {
+    "baseUrl": "https://api.dotprediction.io",
+    "auth": {
+      "method": "key",
+      "name": "X-API-Key"
     }
   },
+  "openapi": [
+    "api-reference/openapi.json"
+  ],
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "claude",
+      "cursor"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/Option-Stealth/dot-prediction-api"
     }
   }
 }

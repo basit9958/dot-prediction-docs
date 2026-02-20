@@ -1,33 +1,64 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "API reference"
+description: "Complete reference for all Dot Prediction API endpoints."
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+## Base URL
 
-## Welcome
+All API requests use the following base URL:
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
-
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+```
+https://api.dotprediction.io
+```
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+All data endpoints require an API key passed via the `X-API-Key` header:
+
+```bash
+curl https://api.dotprediction.io/v1/api/markets?provider=polymarket \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+
+You can also use `Authorization: Bearer YOUR_API_KEY`. See the [Authentication guide](/guides/authentication) for details on obtaining an API key.
+
+## Response format
+
+Successful responses return data with pagination and metadata:
 
 ```json
-"security": [
-  {
-    "bearerAuth": []
+{
+  "pagination": {
+    "total": 100,
+    "limit": 20,
+    "has_more": true,
+    "next_cursor": "abc123"
+  },
+  "markets": [...],
+  "meta": {
+    "platforms_queried": ["polymarket"],
+    "request_time": 45,
+    "cache_hit": false,
+    "data_freshness": "2025-01-15T12:00:00Z"
   }
-]
+}
 ```
+
+Errors return a structured error object:
+
+```json
+{
+  "error": {
+    "status": 400,
+    "message": "invalid provider",
+    "resolution": "provider must be one of: kalshi, polymarket, limitless"
+  }
+}
+```
+
+## Rate limits
+
+- **Free tier:** 250 requests/minute
+- **Pro tier:** 500 requests/minute
+
+See [Rate limiting](/guides/rate-limiting) for details.

@@ -1,0 +1,78 @@
+---
+title: "Pagination"
+description: "How to page through large result sets using cursor-based pagination."
+---
+
+The Dot Prediction API uses cursor-based pagination for all list endpoints. This provides consistent results even as data changes between requests.
+
+## How it works
+
+List endpoints accept two pagination parameters:
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `limit` | string/integer | Maximum number of results to return per page |
+| `cursor` | string | Cursor from a previous response to fetch the next page |
+
+## Response format
+
+Every paginated response includes a `pagination` object:
+
+```json
+{
+  "pagination": {
+    "total": 1250,
+    "limit": 20,
+    "has_more": true,
+    "next_cursor": "eyJpZCI6MTIzfQ=="
+  },
+  "markets": [...],
+  "meta": {...}
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `total` | integer | Total number of results available |
+| `limit` | integer | Number of results returned in this page |
+| `has_more` | boolean | Whether more results are available |
+| `next_cursor` | string \| null | Cursor for the next page, `null` if no more results |
+
+## Paging through results
+
+To fetch all results, keep requesting pages until `has_more` is `false`:
+
+```python
+import requests
+
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.dotprediction.io/v1/api/markets"
+
+all_markets = []
+cursor = None
+
+while True:
+    params = {"provider": "polymarket", "limit": "50"}
+    if cursor:
+        params["cursor"] = cursor
+
+    response = requests.get(
+        BASE_URL,
+        params=params,
+        headers={"X-API-Key": API_KEY}
+    )
+    data = response.json()
+
+    all_markets.extend(data["markets"])
+
+    if not data["pagination"]["has_more"]:
+        break
+
+    cursor = data["pagination"]["next_cursor"]
+
+print(f"Fetched {len(all_markets)} markets")
+```
+
+<Tip>
+  Use a reasonable `limit` value (e.g., 50-100) to balance between request count and response size.
+</Tip>

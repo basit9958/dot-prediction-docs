@@ -1,0 +1,65 @@
+---
+title: "Rate limiting"
+description: "Understand rate limits, subscription tiers, and how to handle throttled requests."
+---
+
+The Dot Prediction API uses a token bucket rate limiter to ensure fair usage across all users.
+
+## Subscription tiers
+
+| Tier | Rate limit | Cost |
+|------|-----------|------|
+| **Free** | 250 requests/minute | Free |
+| **Pro** | 500 requests/minute | Paid |
+
+Rate limits are applied per user, not per API key. If you have multiple API keys, they share the same rate limit bucket.
+
+## Managing your subscription
+
+Check your current subscription:
+
+```bash
+curl https://api.dotprediction.io/v1/api/auth/subscription \
+  -b "jwt=YOUR_SESSION_COOKIE"
+```
+
+Upgrade to Pro:
+
+```bash
+curl -X PUT https://api.dotprediction.io/v1/api/auth/subscription \
+  -H "Content-Type: application/json" \
+  -b "jwt=YOUR_SESSION_COOKIE" \
+  -d '{"tier": "pro"}'
+```
+
+## Rate limit headers
+
+Every API response includes rate limit information in the headers:
+
+| Header | Description |
+|--------|-------------|
+| `X-RateLimit-Limit` | Maximum requests per minute for your tier |
+| `X-RateLimit-Remaining` | Remaining requests in the current window |
+| `Retry-After` | Seconds to wait before retrying (only on `429` responses) |
+
+## Handling rate limits
+
+When you exceed the rate limit, the API returns a `429 Too Many Requests` response:
+
+```json
+{
+  "error": {
+    "status": 429,
+    "message": "rate limit exceeded",
+    "resolution": "wait and retry",
+    "error_text": "too many requests"
+  }
+}
+```
+
+**Best practices:**
+
+1. **Check the `Retry-After` header** and wait the specified number of seconds before retrying
+2. **Implement exponential backoff** for retry logic
+3. **Cache responses** when possible to reduce unnecessary requests
+4. **Monitor `X-RateLimit-Remaining`** to proactively slow down before hitting the limit

@@ -1,0 +1,63 @@
+---
+title: "Errors"
+description: "How the API communicates errors and how to handle them."
+---
+
+The Dot Prediction API uses standard HTTP status codes and returns structured error responses to help you diagnose and resolve issues.
+
+## Error response format
+
+All errors follow this structure:
+
+```json
+{
+  "error": {
+    "status": 400,
+    "message": "invalid provider",
+    "resolution": "provider must be one of: kalshi, polymarket, limitless",
+    "error_text": "validation error"
+  }
+}
+```
+
+| Field | Description |
+|-------|-------------|
+| `status` | HTTP status code |
+| `message` | Human-readable error description |
+| `resolution` | Suggested action to fix the error |
+| `error_text` | Additional error details (when available) |
+
+## HTTP status codes
+
+| Code | Meaning | Common causes |
+|------|---------|---------------|
+| `400` | Bad Request | Missing required parameters, invalid values, unsupported provider for endpoint |
+| `401` | Unauthorized | Missing API key, invalid API key, expired session |
+| `404` | Not Found | Invalid URL path |
+| `405` | Method Not Allowed | Wrong HTTP method (e.g., POST instead of GET) |
+| `429` | Too Many Requests | Rate limit exceeded (see [Rate limiting](/guides/rate-limiting)) |
+| `500` | Internal Server Error | Unexpected server error |
+
+## Handling errors
+
+```python
+import requests
+
+response = requests.get(
+    "https://api.dotprediction.io/v1/api/markets",
+    params={"provider": "polymarket"},
+    headers={"X-API-Key": "YOUR_API_KEY"}
+)
+
+if response.status_code == 200:
+    data = response.json()
+elif response.status_code == 429:
+    retry_after = int(response.headers.get("Retry-After", 5))
+    print(f"Rate limited. Retry in {retry_after} seconds.")
+elif response.status_code == 401:
+    print("Invalid API key. Check your credentials.")
+else:
+    error = response.json().get("error", {})
+    print(f"Error {error.get('status')}: {error.get('message')}")
+    print(f"Resolution: {error.get('resolution')}")
+```

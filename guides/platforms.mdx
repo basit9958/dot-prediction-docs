@@ -1,0 +1,73 @@
+---
+title: "Platforms"
+description: "Supported prediction market platforms and their capabilities."
+---
+
+Dot Prediction aggregates data from multiple prediction market platforms. Each platform has different capabilities — not all endpoints are available for every provider.
+
+## Supported platforms
+
+### Kalshi
+
+A regulated futures exchange offering binary and multiple-choice prediction markets. Markets cover politics, economics, weather, and more.
+
+- **Provider ID:** `kalshi`
+- **Market types:** Binary, multiple choice
+- **Supported endpoints:** All
+
+### Polymarket
+
+A decentralized prediction market protocol built on Polygon. Uses an automated market maker (AMM) and central limit order book (CLOB) for trading.
+
+- **Provider ID:** `polymarket`
+- **Market types:** Binary, multiple choice
+- **Supported endpoints:** All
+
+### Limitless
+
+An emerging prediction market data source with a growing catalog of markets.
+
+- **Provider ID:** `limitless`
+- **Market types:** Binary
+- **Supported endpoints:** Markets, order book, price history only
+
+## Capabilities matrix
+
+| Endpoint | Kalshi | Polymarket | Limitless |
+|----------|--------|------------|-----------|
+| [List markets](/api-reference/endpoint/list-markets) | Yes | Yes | Yes |
+| [Get market](/api-reference/endpoint/get-market) | Yes | Yes | Yes |
+| [Order book](/api-reference/endpoint/get-market-orderbook) | Yes | Yes | Yes |
+| [Trades](/api-reference/endpoint/get-market-trades) | Yes | Yes | No |
+| [Price history](/api-reference/endpoint/get-market-price-history) | Yes | Yes | Yes |
+| [List events](/api-reference/endpoint/list-events) | Yes | Yes | No |
+| [Get event](/api-reference/endpoint/get-event) | Yes | Yes | No |
+| [List series](/api-reference/endpoint/list-series) | Yes | Yes | No |
+| [Get series](/api-reference/endpoint/get-series) | Yes | Yes | No |
+| [User profile](/api-reference/endpoint/get-user-profile) | Yes | Yes | No |
+| [User trades](/api-reference/endpoint/get-user-trades) | Yes | Yes | No |
+
+## The `provider` parameter
+
+All data endpoints require a `provider` query parameter specifying which platform to query.
+
+```bash
+# Query Kalshi markets
+curl "https://api.dotprediction.io/v1/api/markets?provider=kalshi" \
+  -H "X-API-Key: YOUR_API_KEY"
+
+# Query Polymarket markets
+curl "https://api.dotprediction.io/v1/api/markets?provider=polymarket" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+
+If you request an endpoint that isn't supported by the specified provider, the API returns a `400` error.
+
+## Discovering capabilities
+
+Use the [List platforms](/api-reference/endpoint/list-platforms) endpoint to programmatically check which capabilities each platform supports:
+
+```bash
+curl https://api.dotprediction.io/v1/api/platforms \
+  -H "X-API-Key: YOUR_API_KEY"
+```
