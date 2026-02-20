@@ -8,80 +8,81 @@
   "favicon": "/favicon.svg",
   "theme": "maple",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#FA9E34",
+    "light": "#FA9E34",
+    "dark": "#FF9F36"
   },
   "navbar": {
     "primary": {
       "type": "github",
-      "url": "https://github.com/Option-Stealth/dot-prediction-api"
+      "href": "https://github.com/Option-Stealth/dot-prediction-api"
     }
   },
-  "anchors": [],
-  "navigation": [
-    {
-      "group": "Overview",
-      "pages": [
-        "index",
-        "quickstart"
-      ]
-    },
-    {
-      "group": "Guides",
-      "pages": [
-        "guides/authentication",
-        "guides/platforms",
-        "guides/rate-limiting",
-        "guides/pagination",
-        "guides/errors"
-      ]
-    },
-    {
-      "group": "API Reference",
-      "pages": [
-        "api-reference/introduction",
-        {
-          "group": "Markets",
-          "pages": [
-            "api-reference/endpoint/list-markets",
-            "api-reference/endpoint/get-market",
-            "api-reference/endpoint/get-market-orderbook",
-            "api-reference/endpoint/get-market-trades",
-            "api-reference/endpoint/get-market-price-history"
-          ]
-        },
-        {
-          "group": "Events",
-          "pages": [
-            "api-reference/endpoint/list-events",
-            "api-reference/endpoint/get-event"
-          ]
-        },
-        {
-          "group": "Series",
-          "pages": [
-            "api-reference/endpoint/list-series",
-            "api-reference/endpoint/get-series"
-          ]
-        },
-        {
-          "group": "Profiles",
-          "pages": [
-            "api-reference/endpoint/get-user-profile",
-            "api-reference/endpoint/get-user-trades"
-          ]
-        },
-        {
-          "group": "Infrastructure",
-          "pages": [
-            "api-reference/endpoint/health",
-            "api-reference/endpoint/list-platforms"
-          ]
-        }
-      ]
-    }
-  ],
+  "navigation": {
+    "groups": [
+      {
+        "group": "Overview",
+        "pages": [
+          "index",
+          "quickstart"
+        ]
+      },
+      {
+        "group": "Guides",
+        "pages": [
+          "guides/authentication",
+          "guides/platforms",
+          "guides/rate-limiting",
+          "guides/pagination",
+          "guides/errors"
+        ]
+      },
+      {
+        "group": "API Reference",
+        "pages": [
+          "api-reference/introduction",
+          {
+            "group": "Markets",
+            "pages": [
+              "api-reference/endpoint/list-markets",
+              "api-reference/endpoint/get-market",
+              "api-reference/endpoint/get-market-orderbook",
+              "api-reference/endpoint/get-market-trades",
+              "api-reference/endpoint/get-market-price-history"
+            ]
+          },
+          {
+            "group": "Events",
+            "pages": [
+              "api-reference/endpoint/list-events",
+              "api-reference/endpoint/get-event"
+            ]
+          },
+          {
+            "group": "Series",
+            "pages": [
+              "api-reference/endpoint/list-series",
+              "api-reference/endpoint/get-series"
+            ]
+          },
+          {
+            "group": "Profiles",
+            "pages": [
+              "api-reference/endpoint/get-user-profile",
+              "api-reference/endpoint/get-user-trades"
+            ]
+          },
+          {
+            "group": "Infrastructure",
+            "pages": [
+              "api-reference/endpoint/health",
+              "api-reference/endpoint/list-platforms"
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "api": {
     "baseUrl": "https://api.dotprediction.io",
     "auth": {
