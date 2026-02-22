@@ -1,0 +1,45 @@
+---
+title: "Pagination"
+description: "How to page through large result sets with the TypeScript SDK."
+---
+
+Most list endpoints return cursor-based pagination. The response includes a `pagination` object with the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `total` | `number` | Total number of results |
+| `limit` | `number` | Number of results per page |
+| `has_more` | `boolean` | Whether more results are available |
+| `next_cursor` | `string \| null` | Cursor for the next page, `null` if no more results |
+
+## Paging through results
+
+Use a loop to fetch all pages:
+
+```typescript
+import { DotPredictionClient } from '@dot-prediction/sdk';
+
+const client = new DotPredictionClient({ apiKey: 'your-api-key' });
+
+let cursor: string | undefined;
+
+do {
+  const result = await client.markets.list({
+    provider: 'polymarket',
+    limit: '50',
+    cursor,
+  });
+
+  for (const market of result.markets) {
+    console.log(market.title, market.status);
+  }
+
+  cursor = result.pagination.has_more
+    ? result.pagination.next_cursor ?? undefined
+    : undefined;
+} while (cursor);
+```
+
+<Tip>
+  Use a reasonable page size (50-100) to balance the number of requests against response size.
+</Tip>
