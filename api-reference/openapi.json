@@ -834,6 +834,251 @@
         }
       }
     },
+    "/v1/api/profile/pnl": {
+      "get": {
+        "operationId": "getUserPnL",
+        "summary": "Get user PnL",
+        "description": "Returns profit and loss data over time for a specific user. Supports configurable time granularity and optional date range filtering.",
+        "tags": ["Profiles"],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "query",
+            "required": true,
+            "description": "The prediction market platform.",
+            "schema": {
+              "type": "string",
+              "enum": ["kalshi", "polymarket"]
+            }
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "description": "The user identifier on the platform (username or address).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "granularity",
+            "in": "query",
+            "required": true,
+            "description": "Time granularity for PnL data points.",
+            "schema": {
+              "type": "string",
+              "enum": ["day", "week", "month", "year", "all"]
+            }
+          },
+          {
+            "name": "start_time",
+            "in": "query",
+            "required": false,
+            "description": "Start timestamp (Unix epoch) for filtering PnL data.",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "end_time",
+            "in": "query",
+            "required": false,
+            "description": "End timestamp (Unix epoch) for filtering PnL data.",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "PnL time-series data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfilePnLResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
+    "/v1/api/profile/positions": {
+      "get": {
+        "operationId": "getUserPositions",
+        "summary": "Get user positions",
+        "description": "Returns a paginated list of active token positions held by a specific user on the specified platform.",
+        "tags": ["Profiles"],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "query",
+            "required": true,
+            "description": "The prediction market platform.",
+            "schema": {
+              "type": "string",
+              "enum": ["kalshi", "polymarket"]
+            }
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "description": "The user identifier on the platform (username or address).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of positions to return.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor from a previous response.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paginated list of user positions.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfilePositionsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
+    "/v1/api/profile/activity": {
+      "get": {
+        "operationId": "getUserActivity",
+        "summary": "Get user activity",
+        "description": "Returns a paginated list of merge, split, and redeem activity for a specific user. Supports filtering by market and date range.",
+        "tags": ["Profiles"],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "query",
+            "required": true,
+            "description": "The prediction market platform.",
+            "schema": {
+              "type": "string",
+              "enum": ["kalshi", "polymarket"]
+            }
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "description": "The user identifier on the platform (username or address).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "market_id",
+            "in": "query",
+            "required": false,
+            "description": "Filter activity by market ID.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start_time",
+            "in": "query",
+            "required": false,
+            "description": "Start timestamp (Unix epoch) for filtering activity.",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "end_time",
+            "in": "query",
+            "required": false,
+            "description": "End timestamp (Unix epoch) for filtering activity.",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of activities to return.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor from a previous response.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paginated list of user activities.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileActivityResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
     "/v1/api/health": {
       "get": {
         "operationId": "healthCheck",
@@ -1823,6 +2068,170 @@
                 "format": "date-time"
               }
             }
+          }
+        }
+      },
+      "PnLDataPoint": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Unix timestamp for this data point."
+          },
+          "pnl": {
+            "type": "number",
+            "description": "Profit/loss for this period."
+          },
+          "cumulative_pnl": {
+            "type": "number",
+            "description": "Cumulative profit/loss up to this point."
+          }
+        }
+      },
+      "ProfilePnLResponse": {
+        "type": "object",
+        "properties": {
+          "granularity": {
+            "type": "string",
+            "enum": ["day", "week", "month", "year", "all"],
+            "description": "Time granularity of the data points."
+          },
+          "start_time": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Start of the time range."
+          },
+          "end_time": {
+            "type": "integer",
+            "format": "int64",
+            "description": "End of the time range."
+          },
+          "user": {
+            "type": "string",
+            "description": "User identifier."
+          },
+          "pnl_over_time": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PnLDataPoint"
+            },
+            "description": "PnL data points over the requested time range."
+          }
+        }
+      },
+      "Position": {
+        "type": "object",
+        "properties": {
+          "token_id": {
+            "type": "string",
+            "description": "Token identifier for this position."
+          },
+          "market_id": {
+            "type": "string",
+            "description": "Market this position belongs to."
+          },
+          "title": {
+            "type": "string",
+            "description": "Market title."
+          },
+          "shares": {
+            "type": "number",
+            "description": "Raw shares held."
+          },
+          "shares_normalized": {
+            "type": "number",
+            "description": "Normalized shares (human-readable)."
+          },
+          "redeemable": {
+            "type": "boolean",
+            "description": "Whether this position can be redeemed."
+          },
+          "market_status": {
+            "type": "string",
+            "description": "Current market status (e.g., open, closed, resolved)."
+          },
+          "label": {
+            "type": "string",
+            "description": "Outcome label (e.g., Yes, No)."
+          },
+          "winning_outcome": {
+            "type": "string",
+            "nullable": true,
+            "description": "Winning outcome if market is resolved, null otherwise."
+          }
+        }
+      },
+      "ProfilePositionsResponse": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string",
+            "description": "User identifier."
+          },
+          "positions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Position"
+            },
+            "description": "List of active positions."
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          }
+        }
+      },
+      "Activity": {
+        "type": "object",
+        "properties": {
+          "token_id": {
+            "type": "string",
+            "description": "Token identifier."
+          },
+          "market_id": {
+            "type": "string",
+            "description": "Market identifier."
+          },
+          "side": {
+            "type": "string",
+            "enum": ["MERGE", "SPLIT", "REDEEM"],
+            "description": "Activity type."
+          },
+          "shares": {
+            "type": "number",
+            "description": "Number of shares involved."
+          },
+          "price": {
+            "type": "number",
+            "description": "Price at time of activity."
+          },
+          "tx_hash": {
+            "type": "string",
+            "description": "On-chain transaction hash."
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Unix timestamp of the activity."
+          },
+          "user": {
+            "type": "string",
+            "description": "User address."
+          }
+        }
+      },
+      "ProfileActivityResponse": {
+        "type": "object",
+        "properties": {
+          "activities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Activity"
+            },
+            "description": "List of user activities."
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
           }
         }
       },

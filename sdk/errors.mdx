@@ -1,0 +1,72 @@
+---
+title: "Error handling"
+description: "Handle errors and configure requests with the TypeScript SDK."
+---
+
+## Error handling
+
+The SDK throws descriptive errors for API failures:
+
+```typescript
+try {
+  const markets = await client.markets.list({
+    provider: 'polymarket',
+  });
+} catch (error) {
+  if (error instanceof Error) {
+    // "API Error: <message>" for API-level errors (4xx/5xx)
+    // "Request failed: <message>" for network errors
+    console.error(error.message);
+  }
+}
+```
+
+## Request configuration
+
+All methods accept an optional second parameter to customize the request:
+
+```typescript
+const result = await client.markets.list(
+  { provider: 'polymarket' },
+  {
+    timeout: 10000,  // Custom timeout in ms (default: 30000)
+    headers: {       // Additional headers
+      'X-Request-Id': 'my-request-id',
+    },
+  }
+);
+```
+
+## TypeScript support
+
+The SDK exports all types for use in your application:
+
+```typescript
+import {
+  DotPredictionClient,
+  // Core types
+  Market,
+  MarketDetailed,
+  Event,
+  Series,
+  UserProfile,
+  ProfileMetrics,
+  // Response types
+  ListMarketsResponse,
+  MarketOrderbookResponse,
+  MarketTradesResponse,
+  PriceHistoryResponse,
+  EventsResponse,
+  ProfilePnLResponse,
+  ProfilePositionsResponse,
+  ProfileActivityResponse,
+  // Param types
+  ListMarketsParams,
+  GetPriceHistoryParams,
+  GetProfilePnLParams,
+  // Enums
+  Provider,
+  EventProvider,
+  ProfileProvider,
+} from '@dot-prediction/sdk';
+```

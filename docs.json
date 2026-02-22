@@ -69,7 +69,10 @@
             "group": "Profiles",
             "pages": [
               "api-reference/endpoint/get-user-profile",
-              "api-reference/endpoint/get-user-trades"
+              "api-reference/endpoint/get-user-trades",
+              "api-reference/endpoint/get-user-pnl",
+              "api-reference/endpoint/get-user-positions",
+              "api-reference/endpoint/get-user-activity"
             ]
           },
           {
@@ -79,6 +82,15 @@
               "api-reference/endpoint/list-platforms"
             ]
           }
+        ]
+      },
+      {
+        "group": "TypeScript SDK",
+        "pages": [
+          "sdk/introduction",
+          "sdk/endpoints",
+          "sdk/pagination",
+          "sdk/errors"
         ]
       }
     ]
@@ -90,9 +102,7 @@
       "name": "X-API-Key"
     }
   },
-  "openapi": [
-    "api-reference/openapi.json"
-  ],
+  "openapi": "api-reference/openapi.json",
   "contextual": {
     "options": [
       "copy",

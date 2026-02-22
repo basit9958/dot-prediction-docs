@@ -1,0 +1,246 @@
+---
+title: "Endpoints"
+description: "Complete reference for all TypeScript SDK methods."
+---
+
+## Markets
+
+### `client.markets.list(params)`
+
+List prediction markets with optional filtering.
+
+```typescript
+const result = await client.markets.list({
+  provider: 'polymarket',  // Required: 'polymarket' | 'kalshi' | 'limitless'
+  limit: '20',             // Optional: page size
+  cursor: 'abc123',        // Optional: pagination cursor
+  status: 'active',        // Optional: market status filter
+  query: 'bitcoin',        // Optional: search query
+  include_raw: 'true',     // Optional: include raw provider data
+});
+
+// result.markets - Array of Market objects
+// result.pagination - { total, limit, has_more, next_cursor }
+// result.meta - { request_time, cache_hit, data_freshness, platforms_queried }
+```
+
+### `client.markets.getById(params)`
+
+Get detailed information about a specific market.
+
+```typescript
+const result = await client.markets.getById({
+  provider: 'kalshi',
+  id: 'KXBTC-25FEB28',
+  include_raw: true,       // Optional
+});
+```
+
+### `client.markets.getOrderbook(params)`
+
+Get the current orderbook (bids/asks) for a market.
+
+```typescript
+const orderbook = await client.markets.getOrderbook({
+  provider: 'polymarket',
+  id: 'market-id',
+});
+
+// orderbook.data.yes.bids - Array of { price, size }
+// orderbook.data.yes.asks - Array of { price, size }
+// orderbook.data.no.bids  - Array of { price, size }
+// orderbook.data.no.asks  - Array of { price, size }
+```
+
+### `client.markets.getTrades(params)`
+
+Get trade history for a market. Not available for Limitless.
+
+```typescript
+const result = await client.markets.getTrades({
+  provider: 'polymarket',
+  market_id: 'market-id',  // Required
+  limit: 100,              // Optional
+  takerOnly: true,         // Optional: only taker trades
+});
+
+// result.trades - Array of MarketTrade objects
+```
+
+### `client.markets.getPriceHistory(params)`
+
+Get OHLC price history for markets over a time range.
+
+```typescript
+const history = await client.markets.getPriceHistory({
+  provider: 'polymarket',
+  market_ids: 'id-1,id-2',  // Comma-separated, max 10
+  start_ts: 1700000000,     // Unix timestamp (required)
+  end_ts: 1710000000,       // Unix timestamp (required)
+  interval: 60,             // Minutes: 1, 60, or 1440 (optional)
+  limit: 1000,              // Max 5000 (optional)
+});
+
+// history.data[].price - { open, high, low, close }
+// history.data[].bidAsk.bid - { open, high, low, close }
+// history.data[].bidAsk.ask - { open, high, low, close }
+```
+
+---
+
+## Events
+
+Events group related markets together. Only available for Polymarket and Kalshi.
+
+### `client.events.list(params)`
+
+```typescript
+const result = await client.events.list({
+  provider: 'polymarket',
+  limit: '10',
+  query: 'election',
+  include_nested: 'true',  // Include nested market data
+});
+```
+
+### `client.events.getById(params)`
+
+```typescript
+const event = await client.events.getById({
+  provider: 'kalshi',
+  id: 'event-id',
+  include_nested: true,
+});
+```
+
+---
+
+## Series
+
+Series are groupings of events. Only available for Polymarket and Kalshi.
+
+### `client.series.list(params)`
+
+```typescript
+const result = await client.series.list({
+  provider: 'kalshi',
+  limit: 10,
+  query: 'NFL',
+});
+```
+
+### `client.series.getById(params)`
+
+```typescript
+const series = await client.series.getById({
+  provider: 'polymarket',
+  id: 'series-id',
+  include_nested: 'true',
+});
+```
+
+---
+
+## Profile
+
+User profile and trading data. Only available for Polymarket and Kalshi.
+
+### `client.profile.getInfo(params)`
+
+Get a user's profile and optionally their trading metrics.
+
+```typescript
+const profile = await client.profile.getInfo({
+  provider: 'polymarket',
+  user: '0x1234abcd...',
+  include_metrics: 'true',
+});
+
+// profile.data.profile - User profile info
+// profile.data.metrics - Trading metrics (volume, PnL, ROI, etc.)
+```
+
+### `client.profile.getTrades(params)`
+
+Get a paginated list of trades for a user.
+
+```typescript
+const trades = await client.profile.getTrades({
+  provider: 'kalshi',
+  user: 'username',
+  limit: '50',
+});
+```
+
+### `client.profile.getPnL(params)`
+
+Get profit and loss data over time.
+
+```typescript
+const pnl = await client.profile.getPnL({
+  provider: 'polymarket',
+  user: '0x1234...',
+  granularity: 'week',      // Required: 'day' | 'week' | 'month' | 'year' | 'all'
+  start_time: 1700000000,   // Optional: Unix timestamp
+  end_time: 1710000000,     // Optional: Unix timestamp
+});
+
+// pnl.pnl_over_time - Array of { timestamp, pnl, cumulative_pnl }
+```
+
+### `client.profile.getPositions(params)`
+
+Get active positions held by a user.
+
+```typescript
+const positions = await client.profile.getPositions({
+  provider: 'polymarket',
+  user: '0x1234...',
+  limit: '50',              // Optional
+});
+
+// positions.positions - Array of { token_id, market_id, title, shares, label, ... }
+```
+
+### `client.profile.getActivity(params)`
+
+Get merge, split, and redeem activity for a user.
+
+```typescript
+const activity = await client.profile.getActivity({
+  provider: 'polymarket',
+  user: '0x1234...',
+  market_id: 'market-id',   // Optional: filter by market
+  start_time: 1700000000,   // Optional
+  end_time: 1710000000,     // Optional
+});
+
+// activity.activities - Array of { token_id, side, shares, price, tx_hash, ... }
+// side is one of: 'MERGE', 'SPLIT', 'REDEEM'
+```
+
+---
+
+## System
+
+### `client.system.health()`
+
+Check the API health status.
+
+```typescript
+const health = await client.system.health();
+// health.status - "healthy" or "degraded"
+// health.checks - Array of { name, status, response_time_ms }
+// health.uptime_seconds
+// health.version
+```
+
+### `client.system.platforms()`
+
+List supported platforms and their capabilities.
+
+```typescript
+const platforms = await client.system.platforms();
+// platforms.platforms - Array of PlatformInfo
+// Each has: id, display_name, availability, endpoints, capabilities
+```
