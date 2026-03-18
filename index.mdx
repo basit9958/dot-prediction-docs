@@ -1,49 +1,50 @@
 ---
-title: "Introduction"
-description: "A unified API for prediction market data across Kalshi, Polymarket, and Limitless."
+title: Introduction
+description: Unified API for prediction markets
 ---
 
-<Tip>
-  Dot Prediction provides a single API to access prediction market data from multiple platforms. Get markets, order books, trades, price history, and user profiles through one consistent interface.
-</Tip>
+Dot Prediction provides real-time, normalized data from Kalshi, Polymarket, and Limitless through a single REST API. One API key, one data model, three platforms.
 
-## What is Dot Prediction?
+## What You Can Access
 
-Dot Prediction is a prediction market data aggregation API. Instead of integrating with each platform's API individually, you can use Dot Prediction to query normalized data from all supported platforms through a single endpoint.
+- **Markets** -- List, search, and filter across all platforms
+- **Orderbooks** -- Real-time bid/ask depth
+- **Price History** -- OHLC candles at configurable intervals
+- **Analytics** -- Trending markets, stats, categories, whales, top traders
+- **Portfolio** -- Positions, PnL, and trade history
+- **Orders** -- Place, list, and cancel orders
 
-## Supported platforms
+## Supported Platforms
 
-| Platform | Markets | Events | Series | Trades | Order Book | Price History | Profiles |
-|----------|---------|--------|--------|--------|------------|---------------|----------|
-| **Kalshi** | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| **Polymarket** | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| **Limitless** | Yes | No | No | No | Yes | Yes | No |
+| Platform | Markets | Orderbook | Trades | History | Analytics | Orders |
+|----------|---------|-----------|--------|---------|-----------|--------|
+| Kalshi | Yes | Yes | Yes | Yes | Yes | Yes |
+| Polymarket | Yes | Yes | Yes | Yes | Yes | Yes |
+| Limitless | Yes | Yes | -- | Yes | -- | -- |
 
-## Key features
+## Getting Started
 
-- **Unified interface** - One API, multiple prediction market platforms
-- **Normalized data** - Consistent response formats regardless of the source platform
-- **Real-time data** - Markets, order books, and trades updated in real time
-- **OHLC price history** - Candlestick data at 1-minute, 1-hour, or 1-day intervals
-- **User profiles** - Look up trader profiles and performance metrics
-- **Cursor-based pagination** - Efficiently page through large result sets
+1. Create an account at [dotprediction.com](https://dotprediction.com)
+2. Generate an API key
+3. Make your first request
 
-## Get started
+<CodeGroup>
+```bash curl
+curl https://api.dotprediction.io/v1/api/markets?provider=polymarket&limit=5 \
+  -H "X-API-Key: YOUR_API_KEY"
+```
 
-<CardGroup cols={2}>
-  <Card title="Quickstart" icon="rocket" href="/quickstart">
-    Create an account, get an API key, and make your first request.
-  </Card>
-  <Card title="Authentication" icon="key" href="/guides/authentication">
-    Learn how to authenticate your API requests.
-  </Card>
-  <Card title="Platforms" icon="layer-group" href="/guides/platforms">
-    Explore supported platforms and their capabilities.
-  </Card>
-  <Card title="API reference" icon="code" href="/api-reference/introduction">
-    Browse the full API endpoint documentation.
-  </Card>
-  <Card title="TypeScript SDK" icon="js" href="/sdk/introduction">
-    Install the SDK and start querying markets in TypeScript.
-  </Card>
-</CardGroup>
+```python Python
+import requests
+response = requests.get("https://api.dotprediction.io/v1/api/markets",
+    params={"provider": "polymarket", "limit": 5},
+    headers={"X-API-Key": "YOUR_API_KEY"})
+```
+
+```javascript JavaScript
+const res = await fetch(
+  "https://api.dotprediction.io/v1/api/markets?provider=polymarket&limit=5",
+  { headers: { "X-API-Key": "YOUR_API_KEY" } });
+```
+
+</CodeGroup>

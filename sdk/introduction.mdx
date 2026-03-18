@@ -1,102 +1,49 @@
 ---
-title: "TypeScript SDK"
-description: "A type-safe TypeScript SDK for the Dot Prediction API."
+title: TypeScript SDK
+description: Type-safe TypeScript client for the Dot Prediction API.
 ---
-
-The Dot Prediction TypeScript SDK provides a type-safe client for querying prediction markets across **Polymarket**, **Kalshi**, and **Limitless** with a single interface.
 
 ## Installation
 
 <CodeGroup>
-
 ```bash npm
 npm install @dot-prediction/sdk
 ```
-
 ```bash yarn
 yarn add @dot-prediction/sdk
 ```
-
-```bash pnpm
-pnpm add @dot-prediction/sdk
-```
-
 </CodeGroup>
 
-## Quick start
+## Quick Start
 
 ```typescript
 import { DotPredictionClient } from '@dot-prediction/sdk';
-
-const client = new DotPredictionClient({
-  apiKey: 'your-api-key',
-});
-
-// List markets from Polymarket
-const { markets, pagination } = await client.markets.list({
-  provider: 'polymarket',
-  limit: '10',
-  status: 'active',
-});
-
-// Get a specific market
-const market = await client.markets.getById({
-  provider: 'kalshi',
-  id: 'KXBTC-25FEB28',
-});
-
-// Check API health
-const health = await client.system.health();
-console.log(health.status); // "healthy"
+const client = new DotPredictionClient({ apiKey: 'your-api-key' });
+const { markets } = await client.markets.list({ provider: 'polymarket', limit: '10' });
 ```
 
-## Configuration
-
-```typescript
-const client = new DotPredictionClient({
-  // Required: Your API key
-  apiKey: 'your-api-key',
-
-  // Optional: Custom base URL (defaults to https://api.dotprediction.com/v1/api)
-  baseURL: 'https://api.dotprediction.com/v1/api',
-});
-```
-
-The SDK authenticates via the `X-API-Key` header. Obtain your API key from the [quickstart guide](/quickstart).
-
-## Providers
-
-Most endpoints require a `provider` parameter. Supported providers and their capabilities:
-
-| Provider | Markets | Events | Series | Orderbook | Trades | Price History | Profile |
-|----------|---------|--------|--------|-----------|--------|---------------|---------|
-| `polymarket` | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| `kalshi` | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| `limitless` | Yes | No | No | Yes | No | Yes | No |
-
-## Available modules
-
-The client exposes five modules:
+## Modules
 
 | Module | Description |
 |--------|-------------|
-| `client.markets` | List markets, get details, orderbooks, trades, and price history |
-| `client.events` | List and get events (groups of related markets) |
-| `client.series` | List and get series (groups of related events) |
-| `client.profile` | User profiles, trades, PnL, positions, and activity |
+| `client.markets` | List, search, orderbooks, trades, price history |
+| `client.events` | Events (groups of related markets) |
+| `client.series` | Series (groups of related events) |
+| `client.profile` | User profiles, trades, PnL, positions, activity |
 | `client.system` | Health checks and platform capabilities |
 
-<CardGroup cols={2}>
-  <Card title="Endpoints" icon="code" href="/sdk/endpoints">
-    Browse all available SDK methods with examples.
-  </Card>
-  <Card title="Pagination" icon="arrows-left-right" href="/sdk/pagination">
-    Learn how to page through large result sets.
-  </Card>
-  <Card title="Error handling" icon="triangle-exclamation" href="/sdk/errors">
-    Handle errors and configure requests.
-  </Card>
-  <Card title="API reference" icon="book" href="/api-reference/introduction">
-    See the full REST API documentation.
-  </Card>
-</CardGroup>
+## Pagination
+
+Loop until `has_more` is `false`:
+
+```typescript
+let cursor: string | undefined;
+do {
+  const r = await client.markets.list({ provider: 'polymarket', limit: '50', cursor });
+  cursor = r.pagination.has_more ? r.pagination.next_cursor ?? undefined : undefined;
+} while (cursor);
+```
+
+## Errors
+
+The SDK throws `"API Error: <msg>"` for 4xx/5xx, `"Request failed: <msg>"` for network errors.

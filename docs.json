@@ -22,17 +22,13 @@
     "groups": [
       {
         "group": "Overview",
-        "pages": [
-          "index",
-          "quickstart"
-        ]
+        "pages": ["index", "quickstart"]
       },
       {
         "group": "Guides",
         "pages": [
           "guides/authentication",
           "guides/platforms",
-          "guides/rate-limiting",
           "guides/pagination",
           "guides/errors"
         ]
@@ -52,27 +48,46 @@
             ]
           },
           {
-            "group": "Events",
+            "group": "Analytics",
             "pages": [
-              "api-reference/endpoint/list-events",
-              "api-reference/endpoint/get-event"
+              "api-reference/endpoint/trending",
+              "api-reference/endpoint/categories",
+              "api-reference/endpoint/stats",
+              "api-reference/endpoint/whales",
+              "api-reference/endpoint/concentration",
+              "api-reference/endpoint/top-traders"
             ]
           },
           {
-            "group": "Series",
+            "group": "Search",
             "pages": [
-              "api-reference/endpoint/list-series",
-              "api-reference/endpoint/get-series"
+              "api-reference/endpoint/search-markets"
             ]
           },
           {
-            "group": "Profiles",
+            "group": "Orders",
             "pages": [
-              "api-reference/endpoint/get-user-profile",
+              "api-reference/endpoint/create-order",
+              "api-reference/endpoint/list-orders",
+              "api-reference/endpoint/get-order",
+              "api-reference/endpoint/cancel-order"
+            ]
+          },
+          {
+            "group": "Portfolio",
+            "pages": [
+              "api-reference/endpoint/get-user-positions",
               "api-reference/endpoint/get-user-trades",
               "api-reference/endpoint/get-user-pnl",
-              "api-reference/endpoint/get-user-positions",
+              "api-reference/endpoint/get-user-profile",
               "api-reference/endpoint/get-user-activity"
+            ]
+          },
+          {
+            "group": "Metrics",
+            "pages": [
+              "api-reference/endpoint/metrics-snapshot",
+              "api-reference/endpoint/metrics-historical"
             ]
           },
           {
@@ -88,9 +103,7 @@
         "group": "TypeScript SDK",
         "pages": [
           "sdk/introduction",
-          "sdk/endpoints",
-          "sdk/pagination",
-          "sdk/errors"
+          "sdk/endpoints"
         ]
       }
     ]

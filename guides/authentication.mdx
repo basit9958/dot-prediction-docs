@@ -1,82 +1,23 @@
 ---
-title: "Authentication"
-description: "How to authenticate with the Dot Prediction API."
+title: Authentication
+description: How to authenticate with the Dot Prediction API.
 ---
 
-The Dot Prediction API uses two authentication methods depending on the type of endpoint you're accessing.
+## API Key
 
-## API key authentication
+All data endpoints require an API key. Pass it via header:
 
-All data endpoints (markets, events, series, profiles, etc.) require an API key. You can pass your key using either method:
-
-**Header (recommended):**
 ```bash
 curl https://api.dotprediction.io/v1/api/markets?provider=polymarket \
   -H "X-API-Key: YOUR_API_KEY"
 ```
 
-**Bearer token:**
-```bash
-curl https://api.dotprediction.io/v1/api/markets?provider=polymarket \
-  -H "Authorization: Bearer YOUR_API_KEY"
-```
+Alternatively, use `Authorization: Bearer YOUR_API_KEY`.
 
-<Warning>
-  Keep your API key secret. Do not expose it in client-side code or public repositories.
-</Warning>
+## Creating an API Key
 
-## Session authentication
-
-Account management endpoints (creating API keys, managing subscriptions) use JWT cookie-based sessions. A session cookie is set automatically when you register or log in.
-
-### Register
-
-```bash
-curl -X POST https://api.dotprediction.io/v1/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Your Name",
-    "email": "you@example.com",
-    "password": "your-password"
-  }'
-```
-
-**Validation rules:**
-- `name`: minimum 3 characters
-- `email`: valid email format
-- `password`: 6-16 characters
-
-### Log in
-
-```bash
-curl -X POST https://api.dotprediction.io/v1/api/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{
-    "email": "you@example.com",
-    "password": "your-password"
-  }'
-```
-
-### Log out
-
-```bash
-curl -X DELETE https://api.dotprediction.io/v1/api/auth/logout \
-  -b "jwt=YOUR_SESSION_COOKIE"
-```
-
-## Google OAuth
-
-You can also authenticate using Google OAuth. Redirect users to the OAuth endpoint:
-
-```
-GET https://api.dotprediction.io/v1/api/auth/google
-```
-
-This redirects to Google's sign-in page. After authentication, the user is redirected back with a session cookie.
-
-## Managing API keys
-
-### Create a key
+1. Register or log in to get a session cookie
+2. Create a key:
 
 ```bash
 curl -X POST https://api.dotprediction.io/v1/api/auth/api-keys \
@@ -85,29 +26,24 @@ curl -X POST https://api.dotprediction.io/v1/api/auth/api-keys \
   -d '{"name": "production-key"}'
 ```
 
-The `name` field must be 2-64 characters. The response includes the plaintext key — save it immediately, as it cannot be retrieved later.
+Save the `key` from the response immediately -- it cannot be retrieved later.
 
-### List keys
+## Managing Keys
 
-```bash
-curl https://api.dotprediction.io/v1/api/auth/api-keys \
-  -b "jwt=YOUR_SESSION_COOKIE"
-```
+| Action | Method | Endpoint |
+|--------|--------|----------|
+| List keys | `GET` | `/v1/api/auth/api-keys` |
+| Revoke key | `DELETE` | `/v1/api/auth/api-keys/{id}` |
 
-Returns all your API keys with their prefix, creation date, and last used timestamp.
+Both require session authentication via the `jwt` cookie.
 
-### Revoke a key
+## Session Auth
 
-```bash
-curl -X DELETE https://api.dotprediction.io/v1/api/auth/api-keys/KEY_ID \
-  -b "jwt=YOUR_SESSION_COOKIE"
-```
+Account management endpoints use JWT cookie-based sessions. A session is set automatically on register (`POST /v1/api/auth/register`) or login (`POST /v1/api/auth/login`). Google OAuth is also supported via `GET /v1/api/auth/google`.
 
-Revoked keys are immediately invalidated and cannot be used for authentication.
-
-## Error responses
+## Error Responses
 
 | Status | Meaning |
 |--------|---------|
 | `401` | Missing or invalid API key / session |
-| `429` | Rate limit exceeded (see [Rate limiting](/guides/rate-limiting)) |
+| `429` | Rate limit exceeded |
