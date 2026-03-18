@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "name": "Dot Prediction",
+  "name": "Dot Insurance",
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
@@ -8,14 +8,20 @@
   "favicon": "/favicon.svg",
   "theme": "maple",
   "colors": {
-    "primary": "#FA9E34",
-    "light": "#FA9E34",
-    "dark": "#FF9F36"
+    "primary": "#16A34A",
+    "light": "#4ADE80",
+    "dark": "#22C55E"
   },
   "navbar": {
+    "links": [
+      {
+        "label": "Dashboard",
+        "href": "https://dotprediction.com"
+      }
+    ],
     "primary": {
       "type": "github",
-      "href": "https://github.com/Option-Stealth/dot-prediction-api"
+      "href": "https://github.com/dotlabsco/dot-prediction-api"
     }
   },
   "navigation": {
@@ -98,13 +104,6 @@
             ]
           }
         ]
-      },
-      {
-        "group": "TypeScript SDK",
-        "pages": [
-          "sdk/introduction",
-          "sdk/endpoints"
-        ]
       }
     ]
   },
@@ -126,7 +125,7 @@
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/Option-Stealth/dot-prediction-api"
+      "github": "https://github.com/dotlabsco/dot-prediction-api"
     }
   }
 }
