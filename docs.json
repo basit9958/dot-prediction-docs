@@ -5,36 +5,60 @@
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/logo/icon.png",
   "theme": "maple",
   "colors": {
-    "primary": "#FA9E34",
-    "light": "#FA9E34",
-    "dark": "#FF9F36"
+    "primary": "#0D9488",
+    "light": "#14B8A6",
+    "dark": "#0D9488"
   },
   "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:support@dotprediction.com"
+      }
+    ],
     "primary": {
-      "type": "github",
-      "href": "https://github.com/Option-Stealth/dot-prediction-api"
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://dotprediction.com"
     }
+  },
+  "sidebar": {
+    "items": [
+      {
+        "type": "link",
+        "label": "Dashboard",
+        "href": "https://dotprediction.com",
+        "icon": "gauge"
+      },
+      {
+        "type": "link",
+        "label": "Pricing",
+        "href": "https://dotprediction.com/pricing",
+        "icon": "dollar-sign"
+      },
+      {
+        "type": "link",
+        "label": "Discord",
+        "href": "https://discord.gg/dotinsurance",
+        "icon": "discord"
+      }
+    ]
   },
   "navigation": {
     "groups": [
       {
         "group": "Overview",
-        "pages": [
-          "index",
-          "quickstart"
-        ]
+        "pages": ["index", "quickstart"]
       },
       {
         "group": "Guides",
         "pages": [
           "guides/authentication",
           "guides/platforms",
-          "guides/rate-limiting",
-          "guides/pagination",
-          "guides/errors"
+          "guides/pagination"
         ]
       },
       {
@@ -43,6 +67,7 @@
           "api-reference/introduction",
           {
             "group": "Markets",
+            "icon": "chart-line",
             "pages": [
               "api-reference/endpoint/list-markets",
               "api-reference/endpoint/get-market",
@@ -52,45 +77,61 @@
             ]
           },
           {
-            "group": "Events",
+            "group": "Analytics",
+            "icon": "chart-bar",
             "pages": [
-              "api-reference/endpoint/list-events",
-              "api-reference/endpoint/get-event"
+              "api-reference/endpoint/trending",
+              "api-reference/endpoint/categories",
+              "api-reference/endpoint/stats",
+              "api-reference/endpoint/whales",
+              "api-reference/endpoint/concentration",
+              "api-reference/endpoint/top-traders"
             ]
           },
           {
-            "group": "Series",
+            "group": "Search",
+            "icon": "magnifying-glass",
             "pages": [
-              "api-reference/endpoint/list-series",
-              "api-reference/endpoint/get-series"
+              "api-reference/endpoint/search-markets"
             ]
           },
           {
-            "group": "Profiles",
+            "group": "Orders",
+            "icon": "receipt",
             "pages": [
-              "api-reference/endpoint/get-user-profile",
+              "api-reference/endpoint/create-order",
+              "api-reference/endpoint/list-orders",
+              "api-reference/endpoint/get-order",
+              "api-reference/endpoint/cancel-order"
+            ]
+          },
+          {
+            "group": "Portfolio",
+            "icon": "wallet",
+            "pages": [
+              "api-reference/endpoint/get-user-positions",
               "api-reference/endpoint/get-user-trades",
               "api-reference/endpoint/get-user-pnl",
-              "api-reference/endpoint/get-user-positions",
+              "api-reference/endpoint/get-user-profile",
               "api-reference/endpoint/get-user-activity"
             ]
           },
           {
+            "group": "Metrics",
+            "icon": "gauge",
+            "pages": [
+              "api-reference/endpoint/metrics-snapshot",
+              "api-reference/endpoint/metrics-historical"
+            ]
+          },
+          {
             "group": "Infrastructure",
+            "icon": "server",
             "pages": [
               "api-reference/endpoint/health",
               "api-reference/endpoint/list-platforms"
             ]
           }
-        ]
-      },
-      {
-        "group": "TypeScript SDK",
-        "pages": [
-          "sdk/introduction",
-          "sdk/endpoints",
-          "sdk/pagination",
-          "sdk/errors"
         ]
       }
     ]
@@ -113,7 +154,9 @@
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/Option-Stealth/dot-prediction-api"
+      "github": "https://github.com/dotlabsco/dot-prediction-api",
+      "x": "https://x.com/dotinsurance",
+      "discord": "https://discord.gg/dotinsurance"
     }
   }
 }

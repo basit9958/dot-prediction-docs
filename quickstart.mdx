@@ -1,48 +1,31 @@
 ---
-title: "Quickstart"
-description: "Get up and running with the Dot Prediction API in minutes."
+title: Quickstart
+icon: "rocket"
+description: Get up and running with the Dot Prediction API in minutes.
 ---
-
-## Get started in three steps
 
 <Steps>
 
-<Step title="Create an account">
-Register for a Dot Prediction account using email and password.
-
+<Step title="Register">
 ```bash
 curl -X POST https://api.dotprediction.io/v1/api/auth/register \
   -H "Content-Type: application/json" \
-  -d '{
-    "name": "Your Name",
-    "email": "you@example.com",
-    "password": "your-password"
-  }'
+  -d '{"name": "Your Name", "email": "you@example.com", "password": "your-password"}'
 ```
-
-You can also sign up with [Google OAuth](/guides/authentication#google-oauth).
 </Step>
 
-<Step title="Generate an API key">
-Once logged in, create an API key. You'll need the session cookie from registration or login.
-
+<Step title="Create an API key">
 ```bash
 curl -X POST https://api.dotprediction.io/v1/api/auth/api-keys \
   -H "Content-Type: application/json" \
   -b "jwt=YOUR_SESSION_COOKIE" \
-  -d '{
-    "name": "my-first-key"
-  }'
+  -d '{"name": "my-first-key"}'
 ```
-
-The response includes your API key in the `key` field. Save it securely — you won't be able to retrieve it again.
+Save the `key` from the response -- it cannot be retrieved again.
 </Step>
 
-<Step title="Make your first request">
-Use your API key to fetch prediction markets.
-
+<Step title="Fetch markets">
 <CodeGroup>
-
 ```bash curl
 curl https://api.dotprediction.io/v1/api/markets?provider=polymarket&limit=5 \
   -H "X-API-Key: YOUR_API_KEY"
@@ -50,49 +33,19 @@ curl https://api.dotprediction.io/v1/api/markets?provider=polymarket&limit=5 \
 
 ```python Python
 import requests
-
-response = requests.get(
-    "https://api.dotprediction.io/v1/api/markets",
+resp = requests.get("https://api.dotprediction.io/v1/api/markets",
     params={"provider": "polymarket", "limit": 5},
-    headers={"X-API-Key": "YOUR_API_KEY"}
-)
-
-markets = response.json()
-for market in markets["markets"]:
-    print(f"{market['title']} - {market['status']}")
+    headers={"X-API-Key": "YOUR_API_KEY"})
 ```
 
 ```javascript JavaScript
-const response = await fetch(
+const res = await fetch(
   "https://api.dotprediction.io/v1/api/markets?provider=polymarket&limit=5",
-  { headers: { "X-API-Key": "YOUR_API_KEY" } }
-);
-
-const data = await response.json();
-data.markets.forEach(market => {
-  console.log(`${market.title} - ${market.status}`);
-});
+  { headers: { "X-API-Key": "YOUR_API_KEY" } });
+const { markets } = await res.json();
 ```
 
 </CodeGroup>
-
 </Step>
 
 </Steps>
-
-## Next steps
-
-<CardGroup cols={2}>
-  <Card title="Authentication" icon="key" href="/guides/authentication">
-    Learn about API key and session authentication.
-  </Card>
-  <Card title="Platforms" icon="layer-group" href="/guides/platforms">
-    See what data each platform supports.
-  </Card>
-  <Card title="Rate limiting" icon="gauge" href="/guides/rate-limiting">
-    Understand rate limits and subscription tiers.
-  </Card>
-  <Card title="API reference" icon="code" href="/api-reference/introduction">
-    Explore the full API documentation.
-  </Card>
-</CardGroup>

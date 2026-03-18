@@ -1,11 +1,10 @@
 ---
-title: "API reference"
-description: "Complete reference for all Dot Prediction API endpoints."
+title: API Reference
+icon: "code"
+description: Complete reference for all Dot Prediction API endpoints.
 ---
 
 ## Base URL
-
-All API requests use the following base URL:
 
 ```
 https://api.dotprediction.io
@@ -13,52 +12,36 @@ https://api.dotprediction.io
 
 ## Authentication
 
-All data endpoints require an API key passed via the `X-API-Key` header:
+Pass your API key via the `X-API-Key` header:
 
 ```bash
 curl https://api.dotprediction.io/v1/api/markets?provider=polymarket \
   -H "X-API-Key: YOUR_API_KEY"
 ```
 
-You can also use `Authorization: Bearer YOUR_API_KEY`. See the [Authentication guide](/guides/authentication) for details on obtaining an API key.
-
-## Response format
-
-Successful responses return data with pagination and metadata:
+## Response Format
 
 ```json
 {
-  "pagination": {
-    "total": 100,
-    "limit": 20,
-    "has_more": true,
-    "next_cursor": "abc123"
-  },
-  "markets": [...],
-  "meta": {
-    "platforms_queried": ["polymarket"],
-    "request_time": 45,
-    "cache_hit": false,
-    "data_freshness": "2025-01-15T12:00:00Z"
-  }
+  "pagination": { "total": 100, "limit": 20, "has_more": true, "next_cursor": "abc123" },
+  "markets": [],
+  "meta": { "platforms_queried": ["polymarket"], "request_time": 45, "cache_hit": false }
 }
 ```
 
-Errors return a structured error object:
+## Rate Limits
 
-```json
-{
-  "error": {
-    "status": 400,
-    "message": "invalid provider",
-    "resolution": "provider must be one of: kalshi, polymarket, limitless"
-  }
-}
-```
+| Tier | Limit | Cost |
+|------|-------|------|
+| Free | 250 req/min | Free |
+| Pro | 500 req/min | Paid |
 
-## Rate limits
+Rate limits are per user, shared across all API keys.
 
-- **Free tier:** 250 requests/minute
-- **Pro tier:** 500 requests/minute
+**Headers included in every response:**
 
-See [Rate limiting](/guides/rate-limiting) for details.
+| Header | Description |
+|--------|-------------|
+| `X-RateLimit-Limit` | Max requests per minute |
+| `X-RateLimit-Remaining` | Remaining requests in current window |
+| `Retry-After` | Seconds to wait (on `429` responses only) |
