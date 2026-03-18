@@ -21,7 +21,9 @@
         "operationId": "listMarkets",
         "summary": "List markets",
         "description": "Returns a paginated list of prediction markets from the specified provider. Supports filtering by status and full-text search.",
-        "tags": ["Markets"],
+        "tags": [
+          "Markets"
+        ],
         "parameters": [
           {
             "name": "provider",
@@ -30,7 +32,11 @@
             "description": "The prediction market platform to query.",
             "schema": {
               "type": "string",
-              "enum": ["kalshi", "polymarket", "limitless"]
+              "enum": [
+                "kalshi",
+                "polymarket",
+                "limitless"
+              ]
             }
           },
           {
@@ -76,7 +82,10 @@
             "description": "Include the raw provider response in the output. Set to `true` to enable.",
             "schema": {
               "type": "string",
-              "enum": ["true", "false"]
+              "enum": [
+                "true",
+                "false"
+              ]
             }
           }
         ],
@@ -108,7 +117,9 @@
         "operationId": "getMarket",
         "summary": "Get market by ID",
         "description": "Returns detailed information about a specific market by its ID.",
-        "tags": ["Markets"],
+        "tags": [
+          "Markets"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -126,7 +137,11 @@
             "description": "The prediction market platform to query.",
             "schema": {
               "type": "string",
-              "enum": ["kalshi", "polymarket", "limitless"]
+              "enum": [
+                "kalshi",
+                "polymarket",
+                "limitless"
+              ]
             }
           },
           {
@@ -136,7 +151,10 @@
             "description": "Include the raw provider response.",
             "schema": {
               "type": "string",
-              "enum": ["true", "false"]
+              "enum": [
+                "true",
+                "false"
+              ]
             }
           }
         ],
@@ -168,7 +186,9 @@
         "operationId": "getMarketOrderbook",
         "summary": "Get market order book",
         "description": "Returns the current order book (bids and asks) for a specific market. Includes depth information for both Yes and No outcomes.",
-        "tags": ["Markets"],
+        "tags": [
+          "Markets"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -186,7 +206,11 @@
             "description": "The prediction market platform to query.",
             "schema": {
               "type": "string",
-              "enum": ["kalshi", "polymarket", "limitless"]
+              "enum": [
+                "kalshi",
+                "polymarket",
+                "limitless"
+              ]
             }
           },
           {
@@ -196,7 +220,10 @@
             "description": "Include the raw provider response.",
             "schema": {
               "type": "string",
-              "enum": ["true", "false"]
+              "enum": [
+                "true",
+                "false"
+              ]
             }
           }
         ],
@@ -228,7 +255,9 @@
         "operationId": "getMarketTrades",
         "summary": "Get market trades",
         "description": "Returns a paginated list of trades for a specific market. Available for Kalshi and Polymarket only (not supported by Limitless).",
-        "tags": ["Markets"],
+        "tags": [
+          "Markets"
+        ],
         "parameters": [
           {
             "name": "market_id",
@@ -246,7 +275,10 @@
             "description": "The prediction market platform to query.",
             "schema": {
               "type": "string",
-              "enum": ["kalshi", "polymarket"]
+              "enum": [
+                "kalshi",
+                "polymarket"
+              ]
             }
           },
           {
@@ -305,7 +337,9 @@
         "operationId": "getMarketPriceHistory",
         "summary": "Get market price history",
         "description": "Returns OHLC price history data for one or more markets. Supports configurable time intervals and includes bid/ask spread data.",
-        "tags": ["Markets"],
+        "tags": [
+          "Markets"
+        ],
         "parameters": [
           {
             "name": "market_ids",
@@ -343,7 +377,11 @@
             "description": "The prediction market platform to query.",
             "schema": {
               "type": "string",
-              "enum": ["kalshi", "polymarket", "limitless"]
+              "enum": [
+                "kalshi",
+                "polymarket",
+                "limitless"
+              ]
             }
           },
           {
@@ -353,7 +391,11 @@
             "description": "Candlestick interval in minutes. `1` = 1 minute, `60` = 1 hour, `1440` = 1 day.",
             "schema": {
               "type": "integer",
-              "enum": [1, 60, 1440]
+              "enum": [
+                1,
+                60,
+                1440
+              ]
             }
           },
           {
@@ -395,7 +437,9 @@
         "operationId": "listEvents",
         "summary": "List events",
         "description": "Returns a paginated list of events. Events group related markets together. Available for Kalshi and Polymarket only.",
-        "tags": ["Events"],
+        "tags": [
+          "Events"
+        ],
         "parameters": [
           {
             "name": "provider",
@@ -404,7 +448,10 @@
             "description": "The prediction market platform to query.",
             "schema": {
               "type": "string",
-              "enum": ["kalshi", "polymarket"]
+              "enum": [
+                "kalshi",
+                "polymarket"
+              ]
             }
           },
           {
@@ -441,7 +488,10 @@
             "description": "Include the raw provider response.",
             "schema": {
               "type": "string",
-              "enum": ["true", "false"]
+              "enum": [
+                "true",
+                "false"
+              ]
             }
           },
           {
@@ -451,7 +501,10 @@
             "description": "Include nested market data within each event.",
             "schema": {
               "type": "string",
-              "enum": ["true", "false"]
+              "enum": [
+                "true",
+                "false"
+              ]
             }
           }
         ],
@@ -483,7 +536,9 @@
         "operationId": "getEvent",
         "summary": "Get event by ID",
         "description": "Returns detailed information about a specific event, optionally including its nested markets.",
-        "tags": ["Events"],
+        "tags": [
+          "Events"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -501,7 +556,10 @@
             "description": "The prediction market platform to query.",
             "schema": {
               "type": "string",
-              "enum": ["kalshi", "polymarket"]
+              "enum": [
+                "kalshi",
+                "polymarket"
+              ]
             }
           },
           {
@@ -511,7 +569,10 @@
             "description": "Include the raw provider response.",
             "schema": {
               "type": "string",
-              "enum": ["true", "false"]
+              "enum": [
+                "true",
+                "false"
+              ]
             }
           },
           {
@@ -521,7 +582,10 @@
             "description": "Include nested market data.",
             "schema": {
               "type": "string",
-              "enum": ["true", "false"]
+              "enum": [
+                "true",
+                "false"
+              ]
             }
           }
         ],
@@ -553,7 +617,9 @@
         "operationId": "listSeries",
         "summary": "List series",
         "description": "Returns a paginated list of series. A series is a top-level grouping of related events and markets. Available for Kalshi and Polymarket only.",
-        "tags": ["Series"],
+        "tags": [
+          "Series"
+        ],
         "parameters": [
           {
             "name": "provider",
@@ -562,7 +628,10 @@
             "description": "The prediction market platform to query.",
             "schema": {
               "type": "string",
-              "enum": ["kalshi", "polymarket"]
+              "enum": [
+                "kalshi",
+                "polymarket"
+              ]
             }
           },
           {
@@ -599,7 +668,10 @@
             "description": "Include the raw provider response.",
             "schema": {
               "type": "string",
-              "enum": ["true", "false"]
+              "enum": [
+                "true",
+                "false"
+              ]
             }
           },
           {
@@ -609,7 +681,10 @@
             "description": "Include nested event and market data.",
             "schema": {
               "type": "string",
-              "enum": ["true", "false"]
+              "enum": [
+                "true",
+                "false"
+              ]
             }
           }
         ],
@@ -641,7 +716,9 @@
         "operationId": "getSeries",
         "summary": "Get series by ID",
         "description": "Returns detailed information about a specific series, optionally including nested events and markets.",
-        "tags": ["Series"],
+        "tags": [
+          "Series"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -659,7 +736,10 @@
             "description": "The prediction market platform to query.",
             "schema": {
               "type": "string",
-              "enum": ["kalshi", "polymarket"]
+              "enum": [
+                "kalshi",
+                "polymarket"
+              ]
             }
           },
           {
@@ -669,7 +749,10 @@
             "description": "Include the raw provider response.",
             "schema": {
               "type": "string",
-              "enum": ["true", "false"]
+              "enum": [
+                "true",
+                "false"
+              ]
             }
           },
           {
@@ -679,7 +762,10 @@
             "description": "Include nested event and market data.",
             "schema": {
               "type": "string",
-              "enum": ["true", "false"]
+              "enum": [
+                "true",
+                "false"
+              ]
             }
           }
         ],
@@ -711,7 +797,9 @@
         "operationId": "getUserProfile",
         "summary": "Get user profile",
         "description": "Returns profile information for a user on the specified prediction market platform. Optionally includes trading metrics like volume, PnL, and ROI.",
-        "tags": ["Profiles"],
+        "tags": [
+          "Profiles"
+        ],
         "parameters": [
           {
             "name": "provider",
@@ -720,7 +808,10 @@
             "description": "The prediction market platform.",
             "schema": {
               "type": "string",
-              "enum": ["kalshi", "polymarket"]
+              "enum": [
+                "kalshi",
+                "polymarket"
+              ]
             }
           },
           {
@@ -739,7 +830,10 @@
             "description": "Include trading metrics (volume, PnL, ROI, portfolio value).",
             "schema": {
               "type": "string",
-              "enum": ["true", "false"]
+              "enum": [
+                "true",
+                "false"
+              ]
             }
           }
         ],
@@ -771,7 +865,9 @@
         "operationId": "getUserTrades",
         "summary": "Get user trades",
         "description": "Returns a paginated list of trades made by a specific user on the specified platform.",
-        "tags": ["Profiles"],
+        "tags": [
+          "Profiles"
+        ],
         "parameters": [
           {
             "name": "provider",
@@ -780,7 +876,10 @@
             "description": "The prediction market platform.",
             "schema": {
               "type": "string",
-              "enum": ["kalshi", "polymarket"]
+              "enum": [
+                "kalshi",
+                "polymarket"
+              ]
             }
           },
           {
@@ -839,7 +938,9 @@
         "operationId": "getUserPnL",
         "summary": "Get user PnL",
         "description": "Returns profit and loss data over time for a specific user. Supports configurable time granularity and optional date range filtering.",
-        "tags": ["Profiles"],
+        "tags": [
+          "Profiles"
+        ],
         "parameters": [
           {
             "name": "provider",
@@ -848,7 +949,10 @@
             "description": "The prediction market platform.",
             "schema": {
               "type": "string",
-              "enum": ["kalshi", "polymarket"]
+              "enum": [
+                "kalshi",
+                "polymarket"
+              ]
             }
           },
           {
@@ -867,7 +971,13 @@
             "description": "Time granularity for PnL data points.",
             "schema": {
               "type": "string",
-              "enum": ["day", "week", "month", "year", "all"]
+              "enum": [
+                "day",
+                "week",
+                "month",
+                "year",
+                "all"
+              ]
             }
           },
           {
@@ -919,7 +1029,9 @@
         "operationId": "getUserPositions",
         "summary": "Get user positions",
         "description": "Returns a paginated list of active token positions held by a specific user on the specified platform.",
-        "tags": ["Profiles"],
+        "tags": [
+          "Profiles"
+        ],
         "parameters": [
           {
             "name": "provider",
@@ -928,7 +1040,10 @@
             "description": "The prediction market platform.",
             "schema": {
               "type": "string",
-              "enum": ["kalshi", "polymarket"]
+              "enum": [
+                "kalshi",
+                "polymarket"
+              ]
             }
           },
           {
@@ -987,7 +1102,9 @@
         "operationId": "getUserActivity",
         "summary": "Get user activity",
         "description": "Returns a paginated list of merge, split, and redeem activity for a specific user. Supports filtering by market and date range.",
-        "tags": ["Profiles"],
+        "tags": [
+          "Profiles"
+        ],
         "parameters": [
           {
             "name": "provider",
@@ -996,7 +1113,10 @@
             "description": "The prediction market platform.",
             "schema": {
               "type": "string",
-              "enum": ["kalshi", "polymarket"]
+              "enum": [
+                "kalshi",
+                "polymarket"
+              ]
             }
           },
           {
@@ -1084,7 +1204,9 @@
         "operationId": "healthCheck",
         "summary": "Health check",
         "description": "Returns the health status of the API, including database connectivity and uptime.",
-        "tags": ["Infrastructure"],
+        "tags": [
+          "Infrastructure"
+        ],
         "responses": {
           "200": {
             "description": "Service health status.",
@@ -1107,7 +1229,9 @@
         "operationId": "listPlatforms",
         "summary": "List platforms",
         "description": "Returns a list of all supported prediction market platforms and their capabilities.",
-        "tags": ["Infrastructure"],
+        "tags": [
+          "Infrastructure"
+        ],
         "responses": {
           "200": {
             "description": "Supported platforms.",
@@ -1121,6 +1245,1124 @@
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/v1/api/analytics/trending": {
+      "get": {
+        "operationId": "getTrendingMarkets",
+        "summary": "Trending markets",
+        "description": "Returns markets ranked by volume or price change over a time window.",
+        "tags": [
+          "Analytics"
+        ],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "query",
+            "required": false,
+            "description": "Filter by platform. Omit for cross-platform results.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "kalshi",
+                "polymarket",
+                "limitless"
+              ]
+            }
+          },
+          {
+            "name": "window",
+            "in": "query",
+            "required": false,
+            "description": "Time window for trend calculation.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "24h",
+                "7d"
+              ],
+              "default": "24h"
+            }
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "description": "Sort dimension.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "volume_change",
+                "price_change"
+              ],
+              "default": "volume_change"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "description": "Filter by category slug.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Max results to return (default 20, max 100).",
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "maximum": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Trending markets ranked by the specified dimension.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrendingMarketsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitExceeded"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v1/api/analytics/categories": {
+      "get": {
+        "operationId": "getCategoryAnalytics",
+        "summary": "Category analytics",
+        "description": "Returns aggregated statistics broken down by market category.",
+        "tags": [
+          "Analytics"
+        ],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "query",
+            "required": false,
+            "description": "Filter by platform. Omit for cross-platform results.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "kalshi",
+                "polymarket",
+                "limitless"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Category-level analytics.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryAnalyticsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitExceeded"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v1/api/analytics/stats": {
+      "get": {
+        "operationId": "getPlatformStats",
+        "summary": "Platform statistics",
+        "description": "Returns aggregate platform statistics including volume, liquidity, and market counts.",
+        "tags": [
+          "Analytics"
+        ],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "query",
+            "required": false,
+            "description": "Filter by platform. Omit for cross-platform results.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "kalshi",
+                "polymarket",
+                "limitless"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Platform-level aggregate statistics.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformStatsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitExceeded"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v1/api/trades/whales": {
+      "get": {
+        "operationId": "getWhaleTrades",
+        "summary": "Whale trades",
+        "description": "Returns large trades above a minimum size threshold for a given market.",
+        "tags": [
+          "Analytics"
+        ],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "query",
+            "required": true,
+            "description": "The prediction market platform to query.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "kalshi",
+                "polymarket",
+                "limitless"
+              ]
+            }
+          },
+          {
+            "name": "market_id",
+            "in": "query",
+            "required": true,
+            "description": "The market ID to query whale trades for.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "min_size",
+            "in": "query",
+            "required": false,
+            "description": "Minimum trade size (default 1000).",
+            "schema": {
+              "type": "number",
+              "default": 1000
+            }
+          },
+          {
+            "name": "start_time",
+            "in": "query",
+            "required": false,
+            "description": "Start time as Unix timestamp.",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "end_time",
+            "in": "query",
+            "required": false,
+            "description": "End time as Unix timestamp.",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort order.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "time",
+                "size"
+              ],
+              "default": "time"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Max results to return (default 50, max 200).",
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "maximum": 200
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor from a previous response.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Whale trades for the specified market.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WhaleTradesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitExceeded"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v1/api/positions/concentration": {
+      "get": {
+        "operationId": "getPositionConcentration",
+        "summary": "Position concentration",
+        "description": "Returns position concentration analysis and top holders for a market. Only available for Polymarket and Limitless.",
+        "tags": [
+          "Analytics"
+        ],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "query",
+            "required": true,
+            "description": "Platform to query.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "polymarket",
+                "limitless"
+              ]
+            }
+          },
+          {
+            "name": "market_id",
+            "in": "query",
+            "required": true,
+            "description": "The market ID to analyze.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Max results to return (default 20, max 100).",
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "maximum": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Position concentration data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PositionConcentrationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitExceeded"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v1/api/traders/top": {
+      "get": {
+        "operationId": "getTopTraders",
+        "summary": "Top traders",
+        "description": "Returns the global leaderboard of top traders ranked by PnL or volume.",
+        "tags": [
+          "Analytics"
+        ],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "query",
+            "required": true,
+            "description": "Platform to query.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "polymarket",
+                "limitless"
+              ]
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "description": "Category filter (default: overall).",
+            "schema": {
+              "type": "string",
+              "default": "overall"
+            }
+          },
+          {
+            "name": "time_period",
+            "in": "query",
+            "required": false,
+            "description": "Time period for ranking.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "day",
+                "week",
+                "month",
+                "all"
+              ],
+              "default": "month"
+            }
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "description": "Sort dimension.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "pnl",
+                "volume"
+              ],
+              "default": "pnl"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Max results to return (default 25, max 50).",
+            "schema": {
+              "type": "integer",
+              "default": 25,
+              "maximum": 50
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor from a previous response.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top traders leaderboard.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TopTradersResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitExceeded"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v1/api/search/markets": {
+      "get": {
+        "operationId": "searchMarkets",
+        "summary": "Search markets",
+        "description": "Cross-platform market screener with text search, filters, and sorting.",
+        "tags": [
+          "Search"
+        ],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "query",
+            "required": false,
+            "description": "Filter by platform. Omit for cross-platform results.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "kalshi",
+                "polymarket",
+                "limitless"
+              ]
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "description": "Full-text search query.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "description": "Filter by market status.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "open",
+                "closed",
+                "resolved"
+              ]
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "description": "Filter by category slug.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "min_volume",
+            "in": "query",
+            "required": false,
+            "description": "Minimum total volume.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "max_volume",
+            "in": "query",
+            "required": false,
+            "description": "Maximum total volume.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "min_liquidity",
+            "in": "query",
+            "required": false,
+            "description": "Minimum liquidity.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "end_date_before",
+            "in": "query",
+            "required": false,
+            "description": "Markets ending before this date (YYYY-MM-DD).",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "end_date_after",
+            "in": "query",
+            "required": false,
+            "description": "Markets ending after this date (YYYY-MM-DD).",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "description": "Sort dimension.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "volume",
+                "liquidity",
+                "end_date",
+                "created_at"
+              ],
+              "default": "volume"
+            }
+          },
+          {
+            "name": "sort_order",
+            "in": "query",
+            "required": false,
+            "description": "Sort direction.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Max results to return (default 50, max 200).",
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "maximum": 200
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor from a previous response.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search results.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchMarketsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitExceeded"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v1/api/orders": {
+      "post": {
+        "operationId": "createOrder",
+        "summary": "Create order",
+        "description": "Place a new order on the specified platform. Requires stored credentials or a provider with a default client.",
+        "tags": [
+          "Orders"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Order created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateOrderResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitExceeded"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "get": {
+        "operationId": "listOrders",
+        "summary": "List orders",
+        "description": "Returns orders for the authenticated user on the specified platform.",
+        "tags": [
+          "Orders"
+        ],
+        "parameters": [
+          {
+            "name": "platform",
+            "in": "query",
+            "required": true,
+            "description": "The platform to query orders from.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "kalshi",
+                "polymarket",
+                "limitless"
+              ]
+            }
+          },
+          {
+            "name": "credential_id",
+            "in": "query",
+            "required": false,
+            "description": "Credential ID to use. Defaults to your stored credential for the platform.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "market_id",
+            "in": "query",
+            "required": false,
+            "description": "Filter by market ID.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "description": "Filter by order status.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Max results to return (default 50, max 200).",
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "maximum": 200
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor from a previous response.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of orders.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListOrdersResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitExceeded"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v1/api/orders/{id}": {
+      "get": {
+        "operationId": "getOrder",
+        "summary": "Get order",
+        "description": "Returns details for a specific order.",
+        "tags": [
+          "Orders"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The order ID.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform",
+            "in": "query",
+            "required": true,
+            "description": "The platform the order was placed on.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "kalshi",
+                "polymarket",
+                "limitless"
+              ]
+            }
+          },
+          {
+            "name": "credential_id",
+            "in": "query",
+            "required": false,
+            "description": "Credential ID to use.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetOrderResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitExceeded"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "cancelOrder",
+        "summary": "Cancel order",
+        "description": "Cancels an open order.",
+        "tags": [
+          "Orders"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The order ID to cancel.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform",
+            "in": "query",
+            "required": true,
+            "description": "The platform the order was placed on.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "kalshi",
+                "polymarket",
+                "limitless"
+              ]
+            }
+          },
+          {
+            "name": "credential_id",
+            "in": "query",
+            "required": false,
+            "description": "Credential ID to use.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order cancellation result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CancelOrderResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitExceeded"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v1/api/metrics/snapshot": {
+      "get": {
+        "operationId": "getMetricsSnapshot",
+        "summary": "Metrics snapshot",
+        "description": "Returns a real-time snapshot of market metrics including volume, liquidity, spread, and competitive score.",
+        "tags": [
+          "Metrics"
+        ],
+        "parameters": [
+          {
+            "name": "platform",
+            "in": "query",
+            "required": true,
+            "description": "The platform to query.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "kalshi",
+                "polymarket",
+                "limitless"
+              ]
+            }
+          },
+          {
+            "name": "market_id",
+            "in": "query",
+            "required": true,
+            "description": "The market ID.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Market metrics snapshot.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketMetricsSnapshotResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitExceeded"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v1/api/metrics/historical": {
+      "get": {
+        "operationId": "getMetricsHistorical",
+        "summary": "Metrics historical",
+        "description": "Returns time-series market metrics (OHLCV, liquidity, open interest) at configurable intervals.",
+        "tags": [
+          "Metrics"
+        ],
+        "parameters": [
+          {
+            "name": "platform",
+            "in": "query",
+            "required": true,
+            "description": "The platform to query.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "kalshi",
+                "polymarket",
+                "limitless"
+              ]
+            }
+          },
+          {
+            "name": "market_id",
+            "in": "query",
+            "required": true,
+            "description": "The market ID.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start_ts",
+            "in": "query",
+            "required": true,
+            "description": "Start time as Unix timestamp.",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "end_ts",
+            "in": "query",
+            "required": true,
+            "description": "End time as Unix timestamp.",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "interval",
+            "in": "query",
+            "required": false,
+            "description": "Candle interval.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "1m",
+                "5m",
+                "15m",
+                "1h",
+                "4h",
+                "1d"
+              ],
+              "default": "1d"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Max results to return (default 1000, max 5000).",
+            "schema": {
+              "type": "integer",
+              "default": 1000,
+              "maximum": 5000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Historical market metrics.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketMetricsHistoricalResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimitExceeded"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
           }
         }
       }
@@ -2094,7 +3336,13 @@
         "properties": {
           "granularity": {
             "type": "string",
-            "enum": ["day", "week", "month", "year", "all"],
+            "enum": [
+              "day",
+              "week",
+              "month",
+              "year",
+              "all"
+            ],
             "description": "Time granularity of the data points."
           },
           "start_time": {
@@ -2194,7 +3442,11 @@
           },
           "side": {
             "type": "string",
-            "enum": ["MERGE", "SPLIT", "REDEEM"],
+            "enum": [
+              "MERGE",
+              "SPLIT",
+              "REDEEM"
+            ],
             "description": "Activity type."
           },
           "shares": {
@@ -2346,6 +3598,1271 @@
               "error_text": {
                 "type": "string",
                 "description": "Detailed error information."
+              }
+            }
+          }
+        }
+      },
+      "TrendingPrice": {
+        "type": "object",
+        "properties": {
+          "yes": {
+            "type": "number"
+          },
+          "no": {
+            "type": "number"
+          }
+        }
+      },
+      "TrendingChange": {
+        "type": "object",
+        "properties": {
+          "volume_24h": {
+            "type": "number"
+          },
+          "volume_change_percent": {
+            "type": "number"
+          },
+          "price_change_24h": {
+            "type": "number"
+          },
+          "price_change_percent": {
+            "type": "number"
+          }
+        }
+      },
+      "TrendingMetrics": {
+        "type": "object",
+        "properties": {
+          "total_volume": {
+            "type": "number"
+          },
+          "liquidity": {
+            "type": "number"
+          },
+          "open_interest": {
+            "type": "number"
+          }
+        }
+      },
+      "TrendingMarket": {
+        "type": "object",
+        "properties": {
+          "market_id": {
+            "type": "string"
+          },
+          "platform": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "image_url": {
+            "type": "string"
+          },
+          "current_price": {
+            "$ref": "#/components/schemas/TrendingPrice"
+          },
+          "change": {
+            "$ref": "#/components/schemas/TrendingChange"
+          },
+          "metrics": {
+            "$ref": "#/components/schemas/TrendingMetrics"
+          }
+        }
+      },
+      "TrendingMarketsResponse": {
+        "type": "object",
+        "properties": {
+          "trending": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrendingMarket"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "platforms": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "request_time": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "window": {
+                "type": "string"
+              },
+              "sort_by": {
+                "type": "string"
+              },
+              "total_markets_analyzed": {
+                "type": "integer"
+              },
+              "data_completeness": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "CategoryStats": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "active_markets": {
+            "type": "integer"
+          },
+          "total_markets": {
+            "type": "integer"
+          },
+          "volume_24h": {
+            "type": "number"
+          },
+          "volume_7d": {
+            "type": "number"
+          },
+          "volume_30d": {
+            "type": "number"
+          },
+          "total_volume": {
+            "type": "number"
+          },
+          "total_liquidity": {
+            "type": "number"
+          },
+          "avg_liquidity_per_market": {
+            "type": "number"
+          },
+          "avg_spread": {
+            "type": "number"
+          },
+          "platforms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "CategoryAnalyticsResponse": {
+        "type": "object",
+        "properties": {
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CategoryStats"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "platforms": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "request_time": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "total_active_markets": {
+                "type": "integer"
+              },
+              "total_volume_24h": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "CategoryBreakdownEntry": {
+        "type": "object",
+        "properties": {
+          "volume": {
+            "type": "number"
+          },
+          "markets": {
+            "type": "integer"
+          }
+        }
+      },
+      "PlatformStatsDetail": {
+        "type": "object",
+        "properties": {
+          "total_markets": {
+            "type": "integer"
+          },
+          "active_markets": {
+            "type": "integer"
+          },
+          "resolved_markets": {
+            "type": "integer"
+          },
+          "volume_24h": {
+            "type": "number"
+          },
+          "volume_7d": {
+            "type": "number"
+          },
+          "volume_30d": {
+            "type": "number"
+          },
+          "total_volume": {
+            "type": "number"
+          },
+          "total_liquidity": {
+            "type": "number"
+          },
+          "total_open_interest": {
+            "type": "number"
+          },
+          "top_category": {
+            "type": "string"
+          },
+          "avg_spread": {
+            "type": "number"
+          },
+          "market_count_by_status": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer"
+            }
+          },
+          "category_breakdown": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/CategoryBreakdownEntry"
+            }
+          },
+          "data_completeness": {
+            "type": "string"
+          }
+        }
+      },
+      "AggregateStats": {
+        "type": "object",
+        "properties": {
+          "total_markets": {
+            "type": "integer"
+          },
+          "active_markets": {
+            "type": "integer"
+          },
+          "resolved_markets": {
+            "type": "integer"
+          },
+          "volume_24h": {
+            "type": "number"
+          },
+          "volume_7d": {
+            "type": "number"
+          },
+          "volume_30d": {
+            "type": "number"
+          },
+          "total_volume": {
+            "type": "number"
+          },
+          "total_liquidity": {
+            "type": "number"
+          },
+          "total_open_interest": {
+            "type": "number"
+          },
+          "top_category": {
+            "type": "string"
+          },
+          "avg_spread": {
+            "type": "number"
+          },
+          "market_count_by_status": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer"
+            }
+          },
+          "category_breakdown": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/CategoryBreakdownEntry"
+            }
+          },
+          "platforms": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/PlatformStatsDetail"
+            }
+          }
+        }
+      },
+      "PlatformStatsResponse": {
+        "type": "object",
+        "properties": {
+          "stats": {
+            "$ref": "#/components/schemas/AggregateStats"
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "platforms": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "request_time": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "cache_hit": {
+                "type": "boolean"
+              },
+              "data_completeness": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "WhaleTrader": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "pseudonym": {
+            "type": "string"
+          },
+          "profile_image": {
+            "type": "string"
+          }
+        }
+      },
+      "WhaleTrade": {
+        "type": "object",
+        "properties": {
+          "trade_id": {
+            "type": "string"
+          },
+          "market_id": {
+            "type": "string"
+          },
+          "platform": {
+            "type": "string"
+          },
+          "market_title": {
+            "type": "string"
+          },
+          "side": {
+            "type": "string"
+          },
+          "outcome": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "size": {
+            "type": "number"
+          },
+          "notional_value": {
+            "type": "number"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "transaction_hash": {
+            "type": "string"
+          },
+          "trader": {
+            "$ref": "#/components/schemas/WhaleTrader"
+          }
+        }
+      },
+      "WhaleTradesResponse": {
+        "type": "object",
+        "properties": {
+          "trades": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WhaleTrade"
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "platform": {
+                "type": "string"
+              },
+              "request_time": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "min_size_applied": {
+                "type": "number"
+              },
+              "sort": {
+                "type": "string"
+              },
+              "data_freshness": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "ConcentrationStats": {
+        "type": "object",
+        "properties": {
+          "top_10_share": {
+            "type": "number"
+          },
+          "top_20_share": {
+            "type": "number"
+          },
+          "hhi": {
+            "type": "number"
+          },
+          "total_holders": {
+            "type": "integer"
+          },
+          "total_shares": {
+            "type": "number"
+          }
+        }
+      },
+      "PositionHolder": {
+        "type": "object",
+        "properties": {
+          "rank": {
+            "type": "integer"
+          },
+          "address": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "outcome": {
+            "type": "string"
+          },
+          "shares": {
+            "type": "number"
+          },
+          "share_of_total": {
+            "type": "number"
+          },
+          "current_value": {
+            "type": "number"
+          },
+          "entry_price_avg": {
+            "type": "number"
+          },
+          "unrealized_pnl": {
+            "type": "number"
+          },
+          "trade_count": {
+            "type": "integer"
+          },
+          "first_trade": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "last_trade": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "PositionConcentrationResponse": {
+        "type": "object",
+        "properties": {
+          "market_id": {
+            "type": "string"
+          },
+          "platform": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "concentration": {
+            "$ref": "#/components/schemas/ConcentrationStats"
+          },
+          "top_holders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PositionHolder"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "platforms": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "request_time": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "data_completeness": {
+                "type": "string"
+              },
+              "trades_analyzed": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      },
+      "TraderSocial": {
+        "type": "object",
+        "properties": {
+          "x_username": {
+            "type": "string"
+          },
+          "verified": {
+            "type": "boolean"
+          }
+        }
+      },
+      "TopTraderStats": {
+        "type": "object",
+        "properties": {
+          "total_volume": {
+            "type": "number"
+          },
+          "total_pnl": {
+            "type": "number"
+          },
+          "roi_percent": {
+            "type": "number"
+          },
+          "markets_traded": {
+            "type": "integer"
+          },
+          "win_rate": {
+            "type": "number"
+          },
+          "portfolio_value": {
+            "type": "number"
+          },
+          "open_positions": {
+            "type": "integer"
+          }
+        }
+      },
+      "TopTrader": {
+        "type": "object",
+        "properties": {
+          "rank": {
+            "type": "integer"
+          },
+          "address": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "pseudonym": {
+            "type": "string"
+          },
+          "profile_image": {
+            "type": "string"
+          },
+          "bio": {
+            "type": "string"
+          },
+          "social": {
+            "$ref": "#/components/schemas/TraderSocial"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/TopTraderStats"
+          }
+        }
+      },
+      "TopTradersResponse": {
+        "type": "object",
+        "properties": {
+          "traders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TopTrader"
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "platforms": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "request_time": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "cache_hit": {
+                "type": "boolean"
+              },
+              "sort_by": {
+                "type": "string"
+              },
+              "time_period": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "SearchMarket": {
+        "type": "object",
+        "properties": {
+          "market_id": {
+            "type": "string"
+          },
+          "platform": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "current_prices": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "volume_total": {
+            "type": "number"
+          },
+          "volume_24h": {
+            "type": "number"
+          },
+          "liquidity": {
+            "type": "number"
+          },
+          "open_interest": {
+            "type": "number"
+          },
+          "end_date": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "image_url": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "SearchMarketsResponse": {
+        "type": "object",
+        "properties": {
+          "markets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchMarket"
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "platforms": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "request_time": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "query": {
+                "type": "string"
+              },
+              "filters_applied": {
+                "type": "object",
+                "properties": {
+                  "q": {
+                    "type": "string"
+                  },
+                  "provider": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "category": {
+                    "type": "string"
+                  },
+                  "min_volume": {
+                    "type": "number"
+                  },
+                  "max_volume": {
+                    "type": "number"
+                  },
+                  "min_liquidity": {
+                    "type": "number"
+                  },
+                  "end_date_before": {
+                    "type": "string"
+                  },
+                  "end_date_after": {
+                    "type": "string"
+                  }
+                }
+              },
+              "total_markets_scanned": {
+                "type": "integer"
+              },
+              "data_completeness": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "OrderFees": {
+        "type": "object",
+        "properties": {
+          "maker_fee": {
+            "type": "number"
+          },
+          "taker_fee": {
+            "type": "number"
+          },
+          "total_fee": {
+            "type": "number"
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string"
+          },
+          "platform": {
+            "type": "string"
+          },
+          "market_id": {
+            "type": "string"
+          },
+          "side": {
+            "type": "string",
+            "enum": [
+              "buy",
+              "sell"
+            ]
+          },
+          "outcome": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "limit",
+              "market"
+            ]
+          },
+          "price": {
+            "type": "number"
+          },
+          "size": {
+            "type": "number"
+          },
+          "filled_size": {
+            "type": "number"
+          },
+          "remaining_size": {
+            "type": "number"
+          },
+          "average_fill_price": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string"
+          },
+          "time_in_force": {
+            "type": "string"
+          },
+          "client_order_id": {
+            "type": "string"
+          },
+          "fees": {
+            "$ref": "#/components/schemas/OrderFees"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "expiration": {
+            "type": "string"
+          }
+        }
+      },
+      "OrderMeta": {
+        "type": "object",
+        "properties": {
+          "platform": {
+            "type": "string"
+          },
+          "request_time_ms": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "idempotent_replay": {
+            "type": "boolean"
+          }
+        }
+      },
+      "CreateOrderRequest": {
+        "type": "object",
+        "required": [
+          "platform",
+          "market_id",
+          "side",
+          "outcome",
+          "type",
+          "size"
+        ],
+        "properties": {
+          "platform": {
+            "type": "string",
+            "enum": [
+              "kalshi",
+              "polymarket",
+              "limitless"
+            ],
+            "description": "Target platform."
+          },
+          "market_id": {
+            "type": "string",
+            "description": "The market to place the order on."
+          },
+          "credential_id": {
+            "type": "integer",
+            "description": "Stored credential ID. Omit to use default."
+          },
+          "side": {
+            "type": "string",
+            "enum": [
+              "buy",
+              "sell"
+            ],
+            "description": "Order side."
+          },
+          "outcome": {
+            "type": "string",
+            "description": "Outcome to trade (e.g., 'Yes', 'No')."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "limit",
+              "market"
+            ],
+            "description": "Order type."
+          },
+          "price": {
+            "type": "number",
+            "description": "Limit price (0.01-0.99). Required for limit orders."
+          },
+          "size": {
+            "type": "number",
+            "description": "Number of contracts/shares."
+          },
+          "time_in_force": {
+            "type": "string",
+            "description": "Time in force (default: gtc)."
+          },
+          "expiration": {
+            "type": "string",
+            "description": "Expiration time (ISO 8601)."
+          },
+          "client_order_id": {
+            "type": "string",
+            "description": "Client-provided order ID."
+          },
+          "idempotency_key": {
+            "type": "string",
+            "description": "Idempotency key to prevent duplicate orders."
+          }
+        }
+      },
+      "CreateOrderResponse": {
+        "type": "object",
+        "properties": {
+          "order": {
+            "$ref": "#/components/schemas/Order"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/OrderMeta"
+          }
+        }
+      },
+      "ListOrdersResponse": {
+        "type": "object",
+        "properties": {
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Order"
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/OrderMeta"
+          }
+        }
+      },
+      "GetOrderResponse": {
+        "type": "object",
+        "properties": {
+          "order": {
+            "$ref": "#/components/schemas/Order"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/OrderMeta"
+          }
+        }
+      },
+      "CancelOrderResponse": {
+        "type": "object",
+        "properties": {
+          "order": {
+            "$ref": "#/components/schemas/Order"
+          },
+          "cancelled": {
+            "type": "boolean"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/OrderMeta"
+          }
+        }
+      },
+      "MetricsCandle": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "price": {
+            "type": "object",
+            "properties": {
+              "open": {
+                "type": "number"
+              },
+              "high": {
+                "type": "number"
+              },
+              "low": {
+                "type": "number"
+              },
+              "close": {
+                "type": "number"
+              }
+            }
+          },
+          "volume": {
+            "type": "number"
+          },
+          "open_interest": {
+            "type": "number"
+          },
+          "liquidity": {
+            "type": "object",
+            "properties": {
+              "best_bid": {
+                "type": "number"
+              },
+              "best_ask": {
+                "type": "number"
+              },
+              "spread": {
+                "type": "number"
+              },
+              "midpoint": {
+                "type": "number"
+              }
+            }
+          },
+          "trade_count": {
+            "type": "integer"
+          },
+          "notional_value": {
+            "type": "number"
+          }
+        }
+      },
+      "MarketMetricsSnapshotResponse": {
+        "type": "object",
+        "properties": {
+          "market_id": {
+            "type": "string"
+          },
+          "platform": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "metrics": {
+            "type": "object",
+            "properties": {
+              "volume": {
+                "type": "object",
+                "properties": {
+                  "total": {
+                    "type": "number"
+                  },
+                  "volume_24h": {
+                    "type": "number"
+                  },
+                  "volume_7d": {
+                    "type": "number"
+                  },
+                  "volume_30d": {
+                    "type": "number"
+                  },
+                  "volume_1y": {
+                    "type": "number"
+                  }
+                }
+              },
+              "liquidity": {
+                "type": "object",
+                "properties": {
+                  "total": {
+                    "type": "number"
+                  },
+                  "liquidity_score": {
+                    "type": "number"
+                  },
+                  "clob_liquidity": {
+                    "type": "number"
+                  }
+                }
+              },
+              "open_interest": {
+                "type": "number"
+              },
+              "notional_value": {
+                "type": "number"
+              },
+              "spread": {
+                "type": "object",
+                "properties": {
+                  "best_bid": {
+                    "type": "number"
+                  },
+                  "best_ask": {
+                    "type": "number"
+                  },
+                  "spread": {
+                    "type": "number"
+                  },
+                  "adjusted_midpoint": {
+                    "type": "number"
+                  }
+                }
+              },
+              "fees": {
+                "type": "object",
+                "properties": {
+                  "fee_rate": {
+                    "type": "number"
+                  },
+                  "trading_fee": {
+                    "type": "number"
+                  },
+                  "withdrawal_fee": {
+                    "type": "number"
+                  }
+                }
+              },
+              "competitive_score": {
+                "type": "number"
+              },
+              "unique_traders": {
+                "type": "integer"
+              }
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "platforms": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "request_time": {
+                "type": "integer"
+              },
+              "cache_hit": {
+                "type": "boolean"
+              },
+              "data_freshness": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "MarketMetricsHistoricalResponse": {
+        "type": "object",
+        "properties": {
+          "market_id": {
+            "type": "string"
+          },
+          "platform": {
+            "type": "string"
+          },
+          "interval": {
+            "type": "string"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MetricsCandle"
+            }
+          },
+          "data_availability": {
+            "type": "object",
+            "properties": {
+              "price": {
+                "type": "boolean"
+              },
+              "volume": {
+                "type": "boolean"
+              },
+              "open_interest": {
+                "type": "boolean"
+              },
+              "liquidity": {
+                "type": "boolean"
+              },
+              "trade_count": {
+                "type": "boolean"
+              },
+              "notional_value": {
+                "type": "boolean"
+              }
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "platforms": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "time_range": {
+                "type": "object",
+                "properties": {
+                  "start": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "end": {
+                    "type": "integer",
+                    "format": "int64"
+                  }
+                }
+              },
+              "interval": {
+                "type": "string"
+              },
+              "total_candles": {
+                "type": "integer"
+              },
+              "request_time": {
+                "type": "integer"
+              },
+              "cache_hit": {
+                "type": "boolean"
+              },
+              "data_freshness": {
+                "type": "string"
               }
             }
           }
