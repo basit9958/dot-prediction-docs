@@ -1,9 +1,27 @@
-/* Remove hover underline on sidebar and content links */
+/* Remove hover underline on all links */
 a:hover {
   text-decoration: none !important;
 }
 
-/* Clean scrollbar styling */
+/* Make logo bigger */
+a[href="/"] img {
+  height: 32px !important;
+  max-height: 32px !important;
+}
+
+/* Sidebar nav links - bigger text */
+#navbar nav a,
+#navbar nav button {
+  font-size: 15px !important;
+}
+
+/* Sidebar section headings - slightly bigger */
+#navbar h5 {
+  font-size: 13.5px !important;
+  letter-spacing: 0.02em;
+}
+
+/* Clean scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -22,7 +40,6 @@ a:hover {
   background: rgba(255, 255, 255, 0.25);
 }
 
-/* Light mode scrollbar */
 html.light ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.15);
 }

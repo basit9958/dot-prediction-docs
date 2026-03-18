@@ -2,27 +2,50 @@
   "$schema": "https://mintlify.com/docs.json",
   "name": "Dot Insurance",
   "logo": {
-    "light": "/logo/icon.png",
-    "dark": "/logo/icon.png"
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
   },
   "favicon": "/logo/icon.png",
   "theme": "maple",
   "colors": {
-    "primary": "#B8860B",
-    "light": "#DAA520",
-    "dark": "#CD950C"
+    "primary": "#0D9488",
+    "light": "#14B8A6",
+    "dark": "#0D9488"
   },
   "navbar": {
     "links": [
       {
-        "label": "Dashboard",
-        "href": "https://dotprediction.com"
+        "label": "Support",
+        "href": "mailto:support@dotprediction.com"
       }
     ],
     "primary": {
-      "type": "github",
-      "href": "https://github.com/dotlabsco/dot-prediction-api"
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://dotprediction.com"
     }
+  },
+  "sidebar": {
+    "items": [
+      {
+        "type": "link",
+        "label": "Dashboard",
+        "href": "https://dotprediction.com",
+        "icon": "gauge"
+      },
+      {
+        "type": "link",
+        "label": "Pricing",
+        "href": "https://dotprediction.com/pricing",
+        "icon": "dollar-sign"
+      },
+      {
+        "type": "link",
+        "label": "Discord",
+        "href": "https://discord.gg/dotinsurance",
+        "icon": "discord"
+      }
+    ]
   },
   "navigation": {
     "groups": [
@@ -35,8 +58,7 @@
         "pages": [
           "guides/authentication",
           "guides/platforms",
-          "guides/pagination",
-          "guides/errors"
+          "guides/pagination"
         ]
       },
       {
@@ -45,6 +67,7 @@
           "api-reference/introduction",
           {
             "group": "Markets",
+            "icon": "chart-line",
             "pages": [
               "api-reference/endpoint/list-markets",
               "api-reference/endpoint/get-market",
@@ -55,6 +78,7 @@
           },
           {
             "group": "Analytics",
+            "icon": "chart-bar",
             "pages": [
               "api-reference/endpoint/trending",
               "api-reference/endpoint/categories",
@@ -66,12 +90,14 @@
           },
           {
             "group": "Search",
+            "icon": "magnifying-glass",
             "pages": [
               "api-reference/endpoint/search-markets"
             ]
           },
           {
             "group": "Orders",
+            "icon": "receipt",
             "pages": [
               "api-reference/endpoint/create-order",
               "api-reference/endpoint/list-orders",
@@ -81,6 +107,7 @@
           },
           {
             "group": "Portfolio",
+            "icon": "wallet",
             "pages": [
               "api-reference/endpoint/get-user-positions",
               "api-reference/endpoint/get-user-trades",
@@ -91,6 +118,7 @@
           },
           {
             "group": "Metrics",
+            "icon": "gauge",
             "pages": [
               "api-reference/endpoint/metrics-snapshot",
               "api-reference/endpoint/metrics-historical"
@@ -98,6 +126,7 @@
           },
           {
             "group": "Infrastructure",
+            "icon": "server",
             "pages": [
               "api-reference/endpoint/health",
               "api-reference/endpoint/list-platforms"
@@ -125,7 +154,9 @@
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/dotlabsco/dot-prediction-api"
+      "github": "https://github.com/dotlabsco/dot-prediction-api",
+      "x": "https://x.com/dotinsurance",
+      "discord": "https://discord.gg/dotinsurance"
     }
   }
 }
