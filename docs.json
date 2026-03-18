@@ -2,15 +2,15 @@
   "$schema": "https://mintlify.com/docs.json",
   "name": "Dot Insurance",
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/icon.png",
+    "dark": "/logo/icon.png"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/logo/icon.png",
   "theme": "maple",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#4ADE80",
-    "dark": "#22C55E"
+    "primary": "#B8860B",
+    "light": "#DAA520",
+    "dark": "#CD950C"
   },
   "navbar": {
     "links": [
