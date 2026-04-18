@@ -8,9 +8,16 @@
   "favicon": "/logo/icon.png",
   "theme": "maple",
   "colors": {
-    "primary": "#0D9488",
-    "light": "#14B8A6",
-    "dark": "#0D9488"
+    "primary": "#d4a857",
+    "light": "#e6bd6c",
+    "dark": "#d4a857"
+  },
+  "background": {
+    "decoration": "grid",
+    "color": {
+      "light": "#fafaf9",
+      "dark": "#0b0b0d"
+    }
   },
   "navbar": {
     "links": [
