@@ -1,3 +1,48 @@
+/* ---------- Dot Prediction brand theme ---------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap');
+
+:root {
+  --dp-gold: #d4a857;
+  --dp-gold-2: #e6bd6c;
+  --dp-gold-dim: #8a6d3b;
+  --dp-fg: #ededea;
+  --dp-fg-1: #b8b8b2;
+  --dp-fg-2: #77776f;
+  --dp-bg: #0b0b0d;
+  --dp-bg-1: #101013;
+  --dp-line: #26262c;
+}
+
+/* Body uses Inter; code/meta uses JetBrains Mono; accent italics use Instrument Serif */
+body,
+.prose,
+.font-sans {
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif !important;
+  letter-spacing: -0.005em;
+}
+
+code, pre, kbd, samp, .font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace !important;
+}
+
+/* Accent italic words — use `.accent-serif` or <em>_word_</em> inside docs MDX */
+em.accent,
+.prose em:not(.font-mono),
+.accent-serif {
+  font-family: 'Instrument Serif', ui-serif, Georgia, serif !important;
+  font-style: italic;
+  color: var(--dp-gold);
+  font-weight: 400;
+}
+
+/* Heading tweaks to match web app */
+.prose h1, .prose h2, .prose h3,
+h1, h2, h3 {
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+
 /* Remove hover underline on all links */
 a:hover {
   text-decoration: none !important;
@@ -12,13 +57,23 @@ a[href="/"] img {
 /* Sidebar nav links - bigger text */
 #navbar nav a,
 #navbar nav button {
-  font-size: 15px !important;
+  font-size: 14.5px !important;
+  letter-spacing: -0.005em;
 }
 
-/* Sidebar section headings - slightly bigger */
+/* Sidebar section headings */
 #navbar h5 {
-  font-size: 13.5px !important;
-  letter-spacing: 0.02em;
+  font-size: 10.5px !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+  color: var(--dp-fg-2) !important;
+}
+
+/* Active sidebar item: gold accent */
+#navbar nav a[aria-current="page"],
+#navbar nav a.active {
+  color: var(--dp-gold) !important;
 }
 
 /* Clean scrollbar */

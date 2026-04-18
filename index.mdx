@@ -1,51 +1,62 @@
 ---
 title: Introduction
 icon: "book-open"
-description: Prediction market data infrastructure
+description: Unified market data and agent runtime for Kalshi, Polymarket, and Limitless.
 ---
 
-Dot Prediction provides real-time, normalized data from Kalshi, Polymarket, and Limitless through a single REST API. One API key, one data model, three platforms.
+Dot Prediction is two things in one API: a normalized view of every major prediction market, and a runtime for agents that read, write, and trade against it. One key. One schema. Three venues today — more on the roadmap.
 
-## What You Can Access
+## What you get
 
-- **Markets** -- List, search, and filter across all platforms
-- **Orderbooks** -- Real-time bid/ask depth
-- **Price History** -- OHLC candles at configurable intervals
-- **Analytics** -- Trending markets, stats, categories, whales, top traders
-- **Portfolio** -- Positions, PnL, and trade history
-- **Orders** -- Place, list, and cancel orders
+- **Markets** — list, search, filter across Kalshi, Polymarket, and Limitless.
+- **Orderbooks** — real-time bid/ask depth over REST or websocket.
+- **History** — OHLC candles and the full trade tape at configurable intervals.
+- **Analytics** — trending, categories, platform stats, whales, top traders.
+- **Portfolio** — positions, PnL, trades, and account activity per venue.
+- **Orders** — place, list, and cancel on behalf of a user with their vaulted credentials.
 
-## Supported Platforms
+## Venues
 
 | Platform | Markets | Orderbook | Trades | History |
 |----------|---------|-----------|--------|---------|
-| Kalshi | Yes | Yes | Yes | Yes |
-| Polymarket | Yes | Yes | Yes | Yes |
-| Limitless | Yes | Yes | -- | Yes |
+| Kalshi | ✓ | ✓ | ✓ | ✓ |
+| Polymarket | ✓ | ✓ | ✓ | ✓ |
+| Limitless | ✓ | ✓ | — | ✓ |
 
-## Getting Started
+Manifold, Futuur, and PredictIt are on the <em className="accent">roadmap</em> — live coverage rolls out through Q3 and Q4 2026.
 
-1. Create an account at [dotprediction.com](https://dotprediction.com)
-2. Generate an API key
-3. Make your first request
+## Start in three calls
 
 <CodeGroup>
 ```bash curl
 curl https://api.dotprediction.io/v1/api/markets?provider=polymarket&limit=5 \
-  -H "X-API-Key: YOUR_API_KEY"
+  -H "X-API-Key: $DP_API_KEY"
 ```
 
 ```python Python
 import requests
-response = requests.get("https://api.dotprediction.io/v1/api/markets",
+
+r = requests.get(
+    "https://api.dotprediction.io/v1/api/markets",
     params={"provider": "polymarket", "limit": 5},
-    headers={"X-API-Key": "YOUR_API_KEY"})
+    headers={"X-API-Key": os.environ["DP_API_KEY"]},
+)
+r.raise_for_status()
+for m in r.json()["data"]:
+    print(m["title"], "→", m["yes_price"])
 ```
 
 ```javascript JavaScript
 const res = await fetch(
   "https://api.dotprediction.io/v1/api/markets?provider=polymarket&limit=5",
-  { headers: { "X-API-Key": "YOUR_API_KEY" } });
+  { headers: { "X-API-Key": process.env.DP_API_KEY } },
+);
+const { data } = await res.json();
 ```
-
 </CodeGroup>
+
+## Get an API key
+
+Head to [dotprediction.com](https://dotprediction.com), sign up, and create a key from the dashboard. The Free tier gives you 1,000 requests per day — enough to build against.
+
+Dig in with the [Quickstart](/quickstart) or browse the [API reference](/api-reference/introduction).
