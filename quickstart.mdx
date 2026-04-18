@@ -1,8 +1,10 @@
 ---
 title: Quickstart
 icon: "rocket"
-description: Get up and running with the Dot Prediction API in minutes.
+description: Sign up, create a key, fetch your first market — in under a minute.
 ---
+
+Everything here works against the public API. If you prefer to paste into a terminal as you read, have `$DP_API_KEY` in your shell before you start.
 
 <Steps>
 
@@ -10,42 +12,69 @@ description: Get up and running with the Dot Prediction API in minutes.
 ```bash
 curl -X POST https://api.dotprediction.io/v1/api/auth/register \
   -H "Content-Type: application/json" \
-  -d '{"name": "Your Name", "email": "you@example.com", "password": "your-password"}'
+  -d '{"name": "Your Name", "email": "you@example.com", "password": "correct-horse-battery-staple"}'
 ```
+
+The response sets a JWT cookie so the next call is already authenticated. Prefer the dashboard? Sign up at [dotprediction.com](https://dotprediction.com) instead.
 </Step>
 
-<Step title="Create an API key">
+<Step title="Create a key">
 ```bash
 curl -X POST https://api.dotprediction.io/v1/api/auth/api-keys \
   -H "Content-Type: application/json" \
   -b "jwt=YOUR_SESSION_COOKIE" \
   -d '{"name": "my-first-key"}'
 ```
-Save the `key` from the response -- it cannot be retrieved again.
+
+The `key` in the response is shown **once** — save it. Every request below sends it as `X-API-Key`.
 </Step>
 
 <Step title="Fetch markets">
 <CodeGroup>
 ```bash curl
 curl https://api.dotprediction.io/v1/api/markets?provider=polymarket&limit=5 \
-  -H "X-API-Key: YOUR_API_KEY"
+  -H "X-API-Key: $DP_API_KEY"
 ```
 
 ```python Python
-import requests
-resp = requests.get("https://api.dotprediction.io/v1/api/markets",
+import os, requests
+
+r = requests.get(
+    "https://api.dotprediction.io/v1/api/markets",
     params={"provider": "polymarket", "limit": 5},
-    headers={"X-API-Key": "YOUR_API_KEY"})
+    headers={"X-API-Key": os.environ["DP_API_KEY"]},
+)
+r.raise_for_status()
+for m in r.json()["data"]:
+    print(m["title"], "→", m["yes_price"])
 ```
 
 ```javascript JavaScript
 const res = await fetch(
   "https://api.dotprediction.io/v1/api/markets?provider=polymarket&limit=5",
-  { headers: { "X-API-Key": "YOUR_API_KEY" } });
-const { markets } = await res.json();
+  { headers: { "X-API-Key": process.env.DP_API_KEY } },
+);
+const { data } = await res.json();
+console.table(data.map(m => ({ title: m.title, yes: m.yes_price })));
 ```
-
 </CodeGroup>
 </Step>
 
+<Step title="Watch an orderbook">
+```bash
+curl "https://api.dotprediction.io/v1/api/markets/KXCLIMATE-26/orderbook?provider=kalshi" \
+  -H "X-API-Key: $DP_API_KEY"
+```
+
+Normalized bid/ask depth with canonical float prices — same shape on every venue.
+</Step>
+
 </Steps>
+
+## What's next
+
+- [Authentication](/guides/authentication) — JWT vs API keys, and when to use each.
+- [Platforms](/guides/platforms) — how Kalshi and Polymarket map onto our unified schema.
+- [Pagination](/guides/pagination) — cursor-based, bypassing the cache when you want fresh data.
+
+Questions or something missing? Email [support@dotprediction.com](mailto:support@dotprediction.com) or open an issue on [GitHub](https://github.com/dotlabsco/dot-prediction-api).
